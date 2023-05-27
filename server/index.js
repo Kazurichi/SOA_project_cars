@@ -4,7 +4,17 @@ app.set("port", 3000)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const car=require("./routes/car")
+const recall=require("./routes/recall")
+const report=require("./routes/report")
+const user=require("./routes/user")
+const authorization=require("./routes/authorization")
 
+app.use("/car",car);
+app.use("/recall",recall);
+app.use("/report",report);
+app.use("/user",user);
+app.use("/authorization",authorization);
 
 app.listen(app.get("port"), () => {
     console.log(`Server started at http://localhost:${app.get("port")}`)
