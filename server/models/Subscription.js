@@ -3,7 +3,9 @@ const sequelize = getDB();
 const { Model, DataTypes } = require("sequelize");
 
 class Subscription extends Model{
-
+    static associate(models){
+        this.hasMany(models.User,{foreignKey:'idx_user'});
+    }
 }
 
 Subscription.init(

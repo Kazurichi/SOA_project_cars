@@ -3,7 +3,10 @@ const sequelize = getDB();
 const { Model, DataTypes } = require("sequelize");
 
 class ReportType extends Model{
-
+    static associate(models){
+        this.hasMany(models.Report,{foreignKey:'idx'});
+    }
+   
 }
 
 ReportType.init(

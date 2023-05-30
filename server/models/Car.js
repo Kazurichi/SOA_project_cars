@@ -1,9 +1,12 @@
 const { getDB } = require("../config/sequelize");
 const sequelize = getDB();
 const { Model, DataTypes } = require("sequelize");
+const Report = require("../models/Report"); 
 
 class Car extends Model{
-
+    static associate(models){
+        this.hasMany(Report,{foreignKey:'car_idx'});
+    }
 }
 
 Car.init(
