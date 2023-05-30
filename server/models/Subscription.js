@@ -2,11 +2,11 @@ const { getDB } = require("../config/sequelize");
 const sequelize = getDB();
 const { Model, DataTypes } = require("sequelize");
 
-class User extends Model{
+class Subscription extends Model{
 
 }
 
-User.init(
+Subscription.init(
     {
         idx:{
             type:DataTypes.INTEGER,
@@ -30,9 +30,9 @@ User.init(
     {
         sequelize,
         timestamps: true,
-        modelName: "User",
-        tableName: "users",
+        modelName: "Subscription",
+        tableName: "subscriptions",
     }
 );
 
-module.exports = User;
+module.exports = Subscription;
