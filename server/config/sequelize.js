@@ -1,10 +1,11 @@
 const Sequelize = require("sequelize");
+const config=require("./key");
 const db = new Sequelize(
-  'db_car_report', // DB_NAME
-  'root', // DB_USER
-  '', // DB_PASSWORD
+  config.database, // DB_NAME
+  config.username, // DB_USER
+  config.password, // DB_PASSWORD
   {
-    host: '127.0.0.1',
+    host: config.host,
     port: 3306,
     dialect: "mysql",
     logging: console.log,
