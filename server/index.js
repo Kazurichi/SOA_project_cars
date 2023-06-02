@@ -7,6 +7,7 @@ app.use(express.urlencoded({ extended: true }))
 const car=require("./routes/car")
 const recall=require("./routes/recall")
 const report=require("./routes/report")
+const manufacturer=require("./routes/manufacturer")
 const user=require("./routes/user")
 const authorization=require("./routes/authorization")
 
@@ -16,6 +17,7 @@ app.use("/recall",recall);
 app.use("/report",report);
 app.use("/user",user);
 app.use("/authorization",authorization);
+app.use("/manufacturer",manufacturer);
 app.get("/check",async(req,res)=>{
     return res.status(200).send(await Car.findAll());
 });

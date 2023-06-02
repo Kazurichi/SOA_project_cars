@@ -9,7 +9,7 @@ class Manufacturer extends Model{
     }
 }
 
-Report.init(
+Manufacturer.init(
     {
         idx:{
             type:DataTypes.INTEGER,
@@ -36,7 +36,12 @@ Report.init(
         password:{
             type: DataTypes.STRING,
             allowNull:false,
-        }
+        },
+        authorized:{
+            type: DataTypes.INTEGER,
+            allowNull:false,
+        },
+        
     },
     {
         sequelize,

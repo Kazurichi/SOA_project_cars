@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-const Car=require("./models/Car");
 
 //get all cars/get specific car
 router.get("/:vin?",async(req,res)=>{
