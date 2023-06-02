@@ -18,9 +18,7 @@ app.use("/report",report);
 app.use("/user",user);
 app.use("/authorization",authorization);
 app.use("/manufacturer",manufacturer);
-app.get("/check",async(req,res)=>{
-    return res.status(200).send(await Car.findAll());
-});
+
 
 app.listen(app.get("port"), () => {
     console.log(`Server started at http://localhost:${app.get("port")}`)

@@ -9,7 +9,7 @@ class Car extends Model{
     }
 }
 
-Car_manufacturer.init(
+Car.init(
     {
         vin:{
             type:DataTypes.STRING,

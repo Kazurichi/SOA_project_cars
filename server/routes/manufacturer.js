@@ -40,7 +40,7 @@ router.post("/register",async(req,res)=>{
     return res.status(200).send(display)
 });
 //kevin
-router.post("/login",async(req,res)=>{
+router.get("/login",async(req,res)=>{
     let inputs={...req.body}
     
     if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null) {
@@ -60,7 +60,7 @@ router.post("/login",async(req,res)=>{
     let token = jwt.sign({
         idx:find_manufacturer.idx,
         name:inputs.name,
-        role:3
+        role:3 //manufacturer role
     }, JWT_KEY, {expiresIn: '3600s'})
 
     let display={
