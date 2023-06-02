@@ -1,46 +1,31 @@
 const { getDB } = require("../config/sequelize");
 const sequelize = getDB();
 const { Model, DataTypes } = require("sequelize");
-const Report = require("../models/Report"); 
+// const Report = require("../models/Report"); 
 
 class Car extends Model{
     static associate(models){
-        this.hasMany(Report,{foreignKey:'car_idx'});
+        // this.hasMany(Report,{foreignKey:'car_idx'});
     }
 }
 
-Car.init(
+Car_manufacturer.init(
     {
-        idx:{
-            type:DataTypes.INTEGER,
+        vin:{
+            type:DataTypes.STRING,
             allowNull:false,
             primaryKey:true,
             autoIncrement:true
         },
-        car_name:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
-        model:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
-        class:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
-        fuel_type:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
-        manufacturer:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
-        year:{
+        idx_manufacturer:{
             type: DataTypes.INTEGER,
             allowNull:false,
-        }
+        },
+        plat_number:{
+            type: DataTypes.STRING,
+            allowNull:false,
+        },
+
     },
     {
         sequelize,
