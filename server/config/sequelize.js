@@ -1,12 +1,12 @@
 const Sequelize = require("sequelize");
 const config=require("./key");
 const db = new Sequelize(
-  config.database, // DB_NAME
-  config.username, // DB_USER
-  config.password, // DB_PASSWORD
+  'soa_project_cars', // DB_NAME
+  'root', // DB_USER
+  '', // DB_PASSWORD
   {
-    host: config.host,
-    port: 3306,
+    host: '127.0.0.1',
+    port: 300,
     dialect: "mysql",
     logging: console.log,
     timezone: "+07:00",

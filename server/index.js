@@ -10,7 +10,6 @@ const report=require("./routes/report")
 const user=require("./routes/user")
 const authorization=require("./routes/authorization")
 
-const Car=require("./models/Car");
 
 app.use("/car",car);
 app.use("/recall",recall);
