@@ -1,15 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
+const Car=require('../models/Car');
 
-//get all cars/get specific car
+//Kevin
 router.get("/:vin?",async(req,res)=>{
+    return res.status(200).send(await Car.findAll());
+})
+//Kevin
+router.post("/manufacturer/add",async(req,res)=>{
+         
 
 })
-//add car(manufacturer)
-router.post("/",async(req,res)=>{
 
-})
 //update
 router.put("/:vin",async(req,res)=>{
 
