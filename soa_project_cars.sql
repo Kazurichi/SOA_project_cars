@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 06:25 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Jun 03, 2023 at 08:15 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,10 @@ DROP TABLE IF EXISTS `cars`;
 CREATE TABLE `cars` (
   `vin` varchar(255) NOT NULL,
   `idx_car_manufacturer` int(11) NOT NULL,
-  `plat_number` varchar(255) NOT NULL
+  `plat_number` varchar(255) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,7 +54,10 @@ CREATE TABLE `car_manufacturer` (
   `drive` varchar(255) NOT NULL,
   `fuel_type` varchar(255) NOT NULL,
   `transmission` varchar(255) NOT NULL,
-  `cylinders` int(11) NOT NULL
+  `cylinders` int(11) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,16 +74,19 @@ CREATE TABLE `manufacturers` (
   `region_id` varchar(255) NOT NULL,
   `plant_code` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `authorized` int(11) NOT NULL
+  `authorized` int(11) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `manufacturers`
 --
 
-INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plant_code`, `password`, `authorized`) VALUES
-(1, 'toyota', 'Japan', 'J', 'S', '12345678', 0),
-(2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0);
+INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plant_code`, `password`, `authorized`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+(1, 'toyota', 'Japan', 'J', 'S', '12345678', 0, NULL, NULL, NULL),
+(2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -93,8 +102,18 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `account_type` varchar(255) NOT NULL,
-  `API_KEY` varchar(255) NOT NULL
+  `API_KEY` varchar(255) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`idx`, `email`, `username`, `password`, `name`, `account_type`, `API_KEY`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+(1, 'email@email.com', 'User1', '123', 'John', '-', '', '2023-06-03 13:07:49', '2023-06-03 13:07:49', NULL);
 
 --
 -- Indexes for dumped tables
@@ -126,7 +145,7 @@ ALTER TABLE `manufacturers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idx` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `idx` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
