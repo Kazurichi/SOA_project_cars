@@ -17,13 +17,13 @@ Car.init(
             primaryKey:true,
             autoIncrement:true
         },
-        idx_manufacturer:{
+        idx_car_manufacturer:{
             type: DataTypes.INTEGER,
             allowNull:false,
         },
         plat_number:{
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull:true,
         },
 
     },

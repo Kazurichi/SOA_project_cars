@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 06:25 AM
+-- Generation Time: Jun 03, 2023 at 06:01 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -33,8 +33,17 @@ DROP TABLE IF EXISTS `cars`;
 CREATE TABLE `cars` (
   `vin` varchar(255) NOT NULL,
   `idx_car_manufacturer` int(11) NOT NULL,
-  `plat_number` varchar(255) NOT NULL
+  `plat_number` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cars`
+--
+
+INSERT INTO `cars` (`vin`, `idx_car_manufacturer`, `plat_number`) VALUES
+('JTOQA7595RS00001', 1, NULL),
+('JTOQA7595RS00002', 1, NULL),
+('JTOQA7595RS00003', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -53,6 +62,14 @@ CREATE TABLE `car_manufacturer` (
   `transmission` varchar(255) NOT NULL,
   `cylinders` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `car_manufacturer`
+--
+
+INSERT INTO `car_manufacturer` (`idx`, `model`, `idx_manufacturer`, `year`, `drive`, `fuel_type`, `transmission`, `cylinders`) VALUES
+(1, 'supra', 1, 1994, 'rwd', 'gas', 'a', 6),
+(2, 'prius', 1, 2001, 'fwd', 'gas', 'a', 4);
 
 -- --------------------------------------------------------
 
@@ -76,7 +93,7 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plant_code`, `password`, `authorized`) VALUES
-(1, 'toyota', 'Japan', 'J', 'S', '12345678', 0),
+(1, 'toyota', 'Japan', 'J', 'S', '12345678', 1),
 (2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0);
 
 -- --------------------------------------------------------
@@ -101,6 +118,18 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `cars`
+--
+ALTER TABLE `cars`
+  ADD PRIMARY KEY (`vin`);
+
+--
+-- Indexes for table `car_manufacturer`
+--
+ALTER TABLE `car_manufacturer`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- Indexes for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
@@ -115,6 +144,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `car_manufacturer`
+--
+ALTER TABLE `car_manufacturer`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`

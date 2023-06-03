@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "6b6fa447-b41b-47da-bbf7-26a56ea87c4d",
+		"name": "Project Car SOA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26946801"
+	},
+	"item": [
+		{
+			"name": "manufacturer",
+			"item": [
+				{
+					"name": "register manufacturer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Mitsubishi",
+									"type": "text"
+								},
+								{
+									"key": "country_origin",
+									"value": "Japan",
+									"type": "text"
+								},
+								{
+									"key": "region_id",
+									"value": "R",
+									"type": "text"
+								},
+								{
+									"key": "plant_code",
+									"value": "F",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manufacturer/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturer",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example insert",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Mitsubishi",
+											"type": "text"
+										},
+										{
+											"key": "country_origin",
+											"value": "Japan",
+											"type": "text"
+										},
+										{
+											"key": "region_id",
+											"value": "R",
+											"type": "text"
+										},
+										{
+											"key": "plant_code",
+											"value": "F",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/manufacturer/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"manufacturer",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-rk+oFZV5yxYeLdslbJ52I2LUnJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Jun 2023 03:57:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Mitsubishi\",\n    \"country_origin\": \"Japan\",\n    \"region_id\": \"R\",\n    \"plant_code\": \"F\",\n    \"password\": \"12345678\",\n    \"authorized\": \"not authorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login manufacturer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Toyota",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/manufacturer/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"manufacturer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new car_manufacturer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "model",
+									"value": "prius",
+									"type": "text"
+								},
+								{
+									"key": "manufacturer",
+									"value": "toyota",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/car/manufacturer/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car",
+								"manufacturer",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "example add new car model",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "model",
+											"value": "prius",
+											"type": "text"
+										},
+										{
+											"key": "manufacturer",
+											"value": "toyota",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/manufacturer/new",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"manufacturer",
+										"new"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"73-CX1opwcGwCZdRByi8KbHg/pR1CA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Jun 2023 03:41:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"model\": \"prius\",\n    \"idx_manufacturer\": 1,\n    \"fuel_type\": \"gas\",\n    \"year\": 2001,\n    \"drive\": \"fwd\",\n    \"transmission\": \"a\",\n    \"cylinders\": 4\n}"
+						}
+					]
+				},
+				{
+					"name": "add new car from model (VIN)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "car_model",
+									"value": "supra",
+									"type": "text"
+								},
+								{
+									"key": "vehicle_code",
+									"value": "QA759",
+									"type": "text"
+								},
+								{
+									"key": "security_check_digit",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/car/manufacturer/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car",
+								"manufacturer",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add new car from model (VIN)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "car_model",
+											"value": "supra",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_code",
+											"value": "QA759",
+											"type": "text"
+										},
+										{
+											"key": "security_check_digit",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/manufacturer/add",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"manufacturer",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-gQsKMeOmX/5gvYNx+jr8TjNKaNs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Jun 2023 03:53:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOQA7595RS00010\",\n            \"idx_car_manufacturer\": 0\n        },\n        {\n            \"vin\": \"JTOQA7595RS00011\",\n            \"idx_car_manufacturer\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "get all cars",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "get one car",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/car?vin=JTOQA7595RS00001",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car"
+							],
+							"query": [
+								{
+									"key": "vin",
+									"value": "JTOQA7595RS00001"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-dSzR1J8yx0F3o3pZAlVFVUtT/xw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 03 Jun 2023 04:00:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"vin\": \"JTOQA7595RS00001\",\n    \"idx_car_manufacturer\": 1,\n    \"plat_number\": null\n}"
+				},
+				{
+					"name": "get all cars",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/car",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car"
+							],
+							"query": [
+								{
+									"key": "vin",
+									"value": "JTOQA7595RS00001",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "214"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"d6-tNYmYZFbpaPzEvm6fD3lzCJPODs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 03 Jun 2023 04:00:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00003\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    }\n]"
+				}
+			]
+		}
+	]
+}
