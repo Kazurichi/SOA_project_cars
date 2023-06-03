@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Joi = require('joi').extend(require('@joi/date'));
-
+const jwt = require("jsonwebtoken");
+const JWT_KEY = 'SOAcars';
 //Felix
 const checkUniqueEmail = async (email) => { 
     let user = await User.findOne({
@@ -31,7 +32,7 @@ router.post("/register",async(req,res)=>{
         return res.status(403).send(error.toString())
     }
 
-    let newUser = User.create({
+    let newUser = await User.create({
         email:email,
         username:username,
         password:password,
@@ -68,7 +69,32 @@ router.post("/login",async(req,res)=>{
         return res.status(403).send(error.toString())
     }
 
-    return res.status(403).send();
+    
+    let loginUser= await User.findOne({
+        where:{
+            email:email,
+            password:password
+        }
+    });
+
+    let token = jwt.sign({
+        idx:loginUser.idx,
+        username:loginUser.username,
+        role:1 //manufacturer role
+    }, JWT_KEY, {expiresIn: '3600s'})
+
+    let updateUser = await User.update({
+        API_KEY:token
+    },{
+        where:{
+            email:email
+        }
+    });
+
+    return res.status(403).send({
+        message:`Welcome ${loginUser.name}`,
+        API_KEY:token
+    });
 
 });
 
@@ -79,7 +105,9 @@ router.get("/tiers",async(req,res)=>{
 
 //Felix
 router.post("/subsrciption",async(req,res)=>{
-    
+    let token = req.header('x-auth-token');
+
+    let {email, payment} = req.body;
 });
 
 module.exports = router
