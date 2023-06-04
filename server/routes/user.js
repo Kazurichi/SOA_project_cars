@@ -91,7 +91,7 @@ router.post("/login",async(req,res)=>{
         }
     });
 
-    return res.status(403).send({
+    return res.status(200).send({
         message:`Welcome ${loginUser.name}`,
         API_KEY:token
     });
@@ -107,7 +107,30 @@ router.get("/tiers",async(req,res)=>{
 router.post("/subsrciption",async(req,res)=>{
     let token = req.header('x-auth-token');
 
-    let {email, payment} = req.body;
+    if(!req.header('x-auth-token')){
+        return res.status(400).send('Authentication token is missing');
+    }
+
+    let {tier, price} = req.body;
+
+    const schema = Joi.object({
+        tier:Joi.string().required(),
+        price:Joi.number().required()
+    });
+
+    try {
+        await schema.validateAsync(req.body);
+    } catch (error) {
+        return res.status(403).send(error.toString())
+    }
+
+    let getTier = await 
+
+    return res.status(200).send({
+        message:"Subscribe",
+
+    });
+
 });
 
 module.exports = router
