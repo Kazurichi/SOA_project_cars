@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Subsrciption = require('../models/Subscription')
 const Joi = require('joi').extend(require('@joi/date'));
 const jwt = require("jsonwebtoken");
 const JWT_KEY = 'SOAcars';
@@ -124,11 +125,14 @@ router.post("/subsrciption",async(req,res)=>{
         return res.status(403).send(error.toString())
     }
 
-    let getTier = await 
+    let getTier = await Subsrciption.findOne({
+        where:{
+            tier:tier
+        }
+    });
 
     return res.status(200).send({
-        message:"Subscribe",
-
+        message:"Subscribe"
     });
 
 });
