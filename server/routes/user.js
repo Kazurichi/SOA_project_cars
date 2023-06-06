@@ -101,6 +101,17 @@ router.post("/login",async(req,res)=>{
 
 //Felix
 router.get("/tiers",async(req,res)=>{
+    let tiers = await Subsrciption.findAll();
+    if(tiers.length>0){
+        return res.status(200).send({
+            tiers
+        });
+    }
+    else{
+        return res.status(404).send({
+            message:"No tier found"
+        });
+    }
     
 });
 
@@ -111,7 +122,7 @@ router.post("/subsrciption",async(req,res)=>{
     if(!req.header('x-auth-token')){
         return res.status(400).send('Authentication token is missing');
     }
-
+    let userdata = jwt.verify(token, JWT_KEY);
     let {tier, price} = req.body;
 
     const schema = Joi.object({
@@ -131,10 +142,18 @@ router.post("/subsrciption",async(req,res)=>{
         }
     });
 
+    let login = await User.findOne({
+        where:{
+            idx:userdata.idx
+        }
+    });
+    
     return res.status(200).send({
-        message:"Subscribe"
+        message:"Subscribe",
+        tier:tier,
+
     });
 
 });
 
-module.exports = router
+module.exports = router;

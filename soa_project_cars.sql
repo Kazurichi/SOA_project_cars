@@ -110,6 +110,13 @@ CREATE TABLE `subscriptions` (
 --
 -- Table structure for table `users`
 --
+DROP TABLE IF EXISTS `tiers`;
+CREATE TABLE `tiers` (
+  `idx` int(225) NOT NULL,
+  `tier_name` varchar(225) NOT NULL,
+  `price` int(225) NOT NULL,
+  `content_access` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -132,6 +139,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`idx`, `email`, `username`, `password`, `name`, `account_type`, `API_KEY`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 (1, 'email@email.com', 'User1', '123', 'John', '-', '', '2023-06-03 13:07:49', '2023-06-03 13:07:49', NULL);
 
+INSERT INTO `tiers` (`idx`, `tier_name`, `price`, `content_access`) VALUES
+(1, 'Beginner', 10000, 50),
+(2, 'Middle', 20000, 100),
+(3, 'Expert', 50000, 250);
 --
 -- Indexes for dumped tables
 --
