@@ -4,9 +4,10 @@ const { Model, DataTypes } = require("sequelize");
 
 class Subscription extends Model{
     static associate(models){
-        this.hasMany(models.User,{foreignKey:'idx_user'});
+        this.belongsTo(models.User,{foreignKey:'idx'});
     }
-}
+};
+
 
 Subscription.init(
     {
@@ -16,7 +17,7 @@ Subscription.init(
             primaryKey:true,
             autoIncrement:true
         },
-        idx_user:{
+        id_user:{
             type: DataTypes.INTEGER,
             allowNull:false,
         },

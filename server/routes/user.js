@@ -5,7 +5,9 @@ const Subsrciption = require('../models/Subscription')
 const Joi = require('joi').extend(require('@joi/date'));
 const jwt = require("jsonwebtoken");
 const Tier = require('../models/Tier');
+const Subscription = require('../models/Subscription');
 const JWT_KEY = 'SOAcars';
+const bcrypt = require("bcrypt");
 //Felix
 const checkUniqueEmail = async (email) => { 
     let user = await User.findOne({
@@ -33,6 +35,8 @@ router.post("/register",async(req,res)=>{
     } catch (error) {
         return res.status(403).send(error.toString())
     }
+    let encryptPass;
+    bcrypt.hash(password,10).then('Hash',hash)
 
     let newUser = await User.create({
         email:email,
@@ -117,7 +121,7 @@ router.get("/tiers",async(req,res)=>{
 });
 
 //Felix
-router.post("/subsrciption",async(req,res)=>{
+router.post("/subscription",async(req,res)=>{
     let token = req.header('x-auth-token');
 
     if(!req.header('x-auth-token')){
@@ -130,7 +134,6 @@ router.post("/subsrciption",async(req,res)=>{
 
         const schema = Joi.object({
             tier:Joi.string().required(),
-            price:Joi.number().required()
         });
 
         try {
@@ -139,48 +142,53 @@ router.post("/subsrciption",async(req,res)=>{
             return res.status(403).send(error.toString())
         }
 
-        let getTier = await Subsrciption.findOne({
+        let getTier = await Tier.findOne({
             where:{
-                tier:tier
+                idx:tier
             }
         });
 
-        let login = await User.findOne({
+        let subscription = await Subsrciption.findOne({
             where:{
-                idx:userdata.idx
+                id_user:userdata.idx
             }
         });
 
-        if(login){
-            let amount = login.content_access + getTier.content_access;
+        let amount;
 
-            let updateUser = await User.update({
+        if(subscription){
+            amount = subscription.content_access + getTier.content_access;
+
+            let updateSubscribe = await Subscription.update({
                 content_access: amount
             },{
                 where:{
-                    idx:userdata.idx
+                    id_user:userdata.idx
                 }
             });
             
-            return res.status(200).send({
-                message:"Subscribe",
-                tier:tier,
-                price:getTier.price,
-                left_access:`${amount} `
+        }
+        else{
+            amount =  getTier.content_access;
+
+            let insertSubscribe = await Subscription.create({
+                id_user:userdata.idx,
+                tier:getTier.idx,
+                content_access: amount
             });
         }
-        
-        return res.status(404).send({
-            message:"User Not Found",
+        return res.status(200).send({
+            message:"Subscribe",
+            tier:tier,
+            price:getTier.price,
+            left_access:`${amount} `
         });
-        
     }
     else{
         return res.status(403).send({
             message:"Unauthorized"
         });
     }
-
 });
 
 //Felix
@@ -190,27 +198,54 @@ router.get("/profile", async(req,res)=>{
     if(!req.header('x-auth-token')){
         return res.status(400).send('Authentication token is missing');
     }
-    let userdata = jwt.verify(token, JWT_KEY);
+    try {
+        let userdata = jwt.verify(token, JWT_KEY);
     
-    if(userdata.role == 1){
-        let user = await User.findOne({
-            
-        },{
-            where:{
-                idx:userdata.idx
-            }
-        });
+        if(userdata.role == 1){
+            let user = await User.findOne({
+                attributes:['email','username','name']
+            },{
+                where:{
+                    idx:userdata.idx
+                }
+            });
 
-        return res.status(200).send({
-            message:"Profile",
-            user
-        });
+            let subsrciption = await Subsrciption.findOne({
+                attributes:['tier','content_access']
+            },{
+                where:{
+                    id_user:userdata.idx
+                }
+            });
+
+            if(!subsrciption){
+                subsrciption = {
+                    tier:'',
+                    content_access:0
+                }
+            }
+
+            let user_data = {
+                email:user.email,
+                username:user.username,
+                name:user.name,
+                tier:subsrciption.tier,
+                content_access:subsrciption.content_access
+            }
+            return res.status(200).send({
+                message:"Profile",
+                user_data
+            });
+        }
+        else{
+            return res.status(403).send({
+                message:"Unauthorized"
+            });
+        }
+    } catch (error) {
+        return res.status(400).send({error});
     }
-    else{
-        return res.status(403).send({
-            message:"Unauthorized"
-        });
-    }
+    
 });
 
 module.exports = router;

@@ -100,9 +100,9 @@ CREATE TABLE `subscriptions` (
   `id_user` int(225) NOT NULL,
   `tier` int(1) NOT NULL,
   `content_access` int(225) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `deletedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
