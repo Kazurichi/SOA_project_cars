@@ -35,8 +35,6 @@ router.post("/register",async(req,res)=>{
     } catch (error) {
         return res.status(403).send(error.toString())
     }
-    let encryptPass;
-    bcrypt.hash(password,10).then('Hash',hash)
 
     let newUser = await User.create({
         email:email,
