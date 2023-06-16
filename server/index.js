@@ -10,6 +10,7 @@ const report=require("./routes/report")
 const manufacturer=require("./routes/manufacturer")
 const user=require("./routes/user")
 const authorization=require("./routes/authorization")
+const reporter=require("./routes/reporter")
 
 
 app.use("/car",car);
@@ -18,6 +19,7 @@ app.use("/report",report);
 app.use("/user",user);
 app.use("/authorization",authorization);
 app.use("/manufacturer",manufacturer);
+app.use("/reporter",reporter);
 
 
 app.listen(app.get("port"), () => {
