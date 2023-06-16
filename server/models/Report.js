@@ -23,14 +23,22 @@ Report.init(
             allowNull:false,
         },
         type:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull:false,
         },
-        report:{
+        title:{
             type: DataTypes.STRING,
             allowNull:false,
         },
         location:{
+            type: DataTypes.STRING,
+            allowNull:false,
+        },
+        reporter_id:{
+            type: DataTypes.INTEGER,
+            allowNull:false,
+        },
+        description:{
             type: DataTypes.STRING,
             allowNull:false,
         },
