@@ -4,7 +4,7 @@ const Joi = require('joi').extend(require('@joi/date'))
 const Manufacturer=require('../models/Manufacturer')
 const jwt = require("jsonwebtoken");
 const JWT_KEY = 'SOAcars'
-//kevin
+
 router.post("/register",async(req,res)=>{
     let inputs={...req.body};
     const schema=Joi.object({
@@ -39,8 +39,8 @@ router.post("/register",async(req,res)=>{
     };
     return res.status(200).send(display)
 });
-//kevin
-router.get("/login",async(req,res)=>{
+
+router.post("/login",async(req,res)=>{
     let inputs={...req.body}
     
     if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null) {

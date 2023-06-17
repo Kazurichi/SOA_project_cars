@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "b97c2efb-d266-44e1-a416-caaeb5b21526",
+		"_postman_id": "c6b5dc8f-759c-47b6-bdf4-a6a010ae1eca",
 		"name": "Project Car SOA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26881521"
+		"_exporter_id": "26946801"
 	},
 	"item": [
 		{
@@ -144,11 +144,8 @@
 				},
 				{
 					"name": "login manufacturer",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "urlencoded",
@@ -355,7 +352,7 @@
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDI0NzcsImV4cCI6MTY4NzAwNjA3N30.Zu3nnAIvkkI82j8m8pIWKxFW4B0b_IdmUMncWu0_W_E",
 										"type": "text"
 									}
 								],
@@ -364,7 +361,7 @@
 									"urlencoded": [
 										{
 											"key": "car_model",
-											"value": "supra",
+											"value": "prius",
 											"type": "text"
 										},
 										{
@@ -411,15 +408,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "153"
+									"value": "103"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"99-gQsKMeOmX/5gvYNx+jr8TjNKaNs\""
+									"value": "W/\"67-vzP4gFCwd6sbZACAGYA+HRGvFTw\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 03 Jun 2023 03:53:18 GMT"
+									"value": "Sat, 17 Jun 2023 11:52:50 GMT"
 								},
 								{
 									"key": "Connection",
@@ -431,39 +428,167 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOQA7595RS00010\",\n            \"idx_car_manufacturer\": 0\n        },\n        {\n            \"vin\": \"JTOQA7595RS00011\",\n            \"idx_car_manufacturer\": 0\n        }\n    ]\n}"
+							"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOQA75951S00002\"\n        },\n        {\n            \"vin\": \"JTOQA75951S00003\"\n        }\n    ]\n}"
 						}
 					]
 				},
 				{
-					"name": "get all cars",
+					"name": "add recall",
 					"request": {
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "car_model",
+									"value": "prius",
+									"type": "text"
+								},
+								{
+									"key": "cause",
+									"value": "infotaiment system",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": ""
+							"raw": "localhost:3000/recall",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recall"
+							]
 						}
 					},
 					"response": [
 						{
-							"name": "get one car",
+							"name": "recall",
 							"originalRequest": {
-								"method": "GET",
-								"header": [],
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "car_model",
+											"value": "supra",
+											"type": "text"
+										},
+										{
+											"key": "cause",
+											"value": "new stuff added (engine)",
+											"type": "text"
+										}
+									]
+								},
 								"url": {
-									"raw": "localhost:3000/car?vin=JTOQA7595RS00001",
+									"raw": "localhost:3000/recall",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"car"
+										"recall"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-9l6JPzWQaZzwJZgF76wNYAI4uyk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 12:37:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"car recall order\",\n    \"model\": \"supra\",\n    \"cause\": \"new stuff added (engine)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "get recall",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/recall/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"recall",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all recall",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/recall/",
+									"host": [
+										"localhost"
 									],
-									"query": [
-										{
-											"key": "vin",
-											"value": "JTOQA7595RS00001"
-										}
+									"port": "3000",
+									"path": [
+										"recall",
+										""
 									]
 								}
 							},
@@ -481,15 +606,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "70"
+									"value": "158"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"46-dSzR1J8yx0F3o3pZAlVFVUtT/xw\""
+									"value": "W/\"9e-lZbZPLQTAyX02V29jDpg01KzY2w\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 03 Jun 2023 04:00:34 GMT"
+									"value": "Sat, 17 Jun 2023 12:39:00 GMT"
 								},
 								{
 									"key": "Connection",
@@ -501,27 +626,33 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"vin\": \"JTOQA7595RS00001\",\n    \"idx_car_manufacturer\": 1,\n    \"plat_number\": null\n}"
+							"body": "[\n    {\n        \"model\": \"prius\",\n        \"recalls\": [\n            {\n                \"causes\": \"infotaiment system\"\n            },\n            {\n                \"causes\": \"hybrid system\"\n            }\n        ]\n    },\n    {\n        \"model\": \"supra\",\n        \"recalls\": [\n            {\n                \"causes\": \"new stuff added (engine)\"\n            }\n        ]\n    }\n]"
 						},
 						{
-							"name": "get all cars",
+							"name": "get single model recall",
 							"originalRequest": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "localhost:3000/car",
+									"raw": "localhost:3000/recall/?model=supra",
 									"host": [
 										"localhost"
 									],
 									"port": "3000",
 									"path": [
-										"car"
+										"recall",
+										""
 									],
 									"query": [
 										{
-											"key": "vin",
-											"value": "JTOQA7595RS00001",
-											"disabled": true
+											"key": "model",
+											"value": "supra"
 										}
 									]
 								}
@@ -540,15 +671,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "214"
+									"value": "67"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d6-tNYmYZFbpaPzEvm6fD3lzCJPODs\""
+									"value": "W/\"43-oMXQXPc+5IlxdAryBbFpF+Wktk0\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 03 Jun 2023 04:00:55 GMT"
+									"value": "Sat, 17 Jun 2023 12:43:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -560,7 +691,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00003\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    }\n]"
+							"body": "{\n    \"model\": \"supra\",\n    \"recalls\": [\n        {\n            \"causes\": \"new stuff added (engine)\"\n        }\n    ]\n}"
 						}
 					]
 				}
@@ -863,10 +994,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
 								"url": {
 									"raw": "localhost:3000/report?id=4",
 									"host": [
@@ -931,10 +1058,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
 								"url": {
 									"raw": "localhost:3000/report",
 									"host": [
@@ -1000,10 +1123,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
 								"url": {
 									"raw": "localhost:3000/report",
 									"host": [
@@ -1420,8 +1539,158 @@
 							"body": "{\n    \"message\": \"Reporter Registered Successfully\",\n    \"username\": \"Malv123\",\n    \"name\": \"Malv\",\n    \"company\": \"Pt. Company\"\n}"
 						}
 					]
+				},
+				{
+					"name": "Add car plat number",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDIwMTgsImV4cCI6MTY4NzAwNTYxOH0.8BdyubvrhKqpRbwuM7hn0t6xWpyBKtEVVxtzHGQ8sbA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plat_number",
+									"value": "L123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/car/plat_number/:vin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car",
+								"plat_number",
+								":vin"
+							],
+							"variable": [
+								{
+									"key": "vin",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add car plat number",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzAwMjI0OCwiZXhwIjoxNjg3MDA1ODQ4fQ._fYq-BPvZ5Wn_XAvFo1nDW0h9M8E6v97iul89FhdSZM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "plat_number",
+											"value": "L123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/plat_number/:vin",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"plat_number",
+										":vin"
+									],
+									"variable": [
+										{
+											"key": "vin",
+											"value": "JTOQA75951S00001"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-LBJzqtSXVydEnT5h2DAjff3Yb4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 11:46:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"plat number successfully changed to L123\"\n}"
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "get car details(vin)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDcyMzQsImV4cCI6MTY4NzAxMDgzNH0.USdh9scvSsJVtM8hvlflRFs5bRdfvPHvmuHzI5MsFiA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/car/?vin=JTOQA75951S00001",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"car",
+						""
+					],
+					"query": [
+						{
+							"key": "vin",
+							"value": "JTOQA75951S00001"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

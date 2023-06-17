@@ -4,26 +4,117 @@ const router = express.Router()
 const Car=require('../models/Car');
 const Manufacturer=require('../models/Manufacturer');
 const Car_manufacturer=require('../models/Car_manufacturer');
+const Report=require('../models/Report');
 const axios=require('axios');
 const jwt=require('jsonwebtoken');
 const Joi = require('joi').extend(require('@joi/date'))
-
+const User=require('../models/User');
+const Subscription=require('../models/Subscription');
 const JWT_KEY = 'SOAcars'
+const { getDB } = require("../config/sequelize");
+const sequelize = getDB();
+const {QueryTypes} = require('sequelize');
 
-//Kevin
 router.get("/:vin?",async(req,res)=>{
-    let vin=req.query.vin
-    if (vin!=null) {
-        let car=await Car.findByPk(vin);
-        if (!car) {
-            return res.status(404).send("car not found")
-        }
-        return res.status(200).send(car);
-    }else{
-        return res.status(200).send(await Car.findAll());
+    let vin= req.query.vin
+    let token = req.header('x-auth-token')
+    if(!req.header('x-auth-token')){
+        return res.status(400).send('Authentication token is missing')
     }
+    try{
+      let check = jwt.verify(token, JWT_KEY);
+      if(check.role != 1){
+        if (vin!=null) {
+            let car_vin=await Car.findOne({
+                where:{
+                    vin:vin
+                }
+            });
+            if (!car_vin) {
+                return res.status(404).send("Car vin not found")
+            }
+            let car_model=await Car_manufacturer.findOne({
+                where:{
+                    idx:car_vin.idx_car_manufacturer,
+                },attributes:['model','year','drive','fuel_type','transmission','cylinders']
+            })
+            let car_model2=await Car_manufacturer.findOne({where:{idx:car_vin.idx_car_manufacturer}});
+            let manufacturer=await Manufacturer.findOne({
+                where:{idx:car_model2.idx_manufacturer},
+                attributes:['name']
+            })
+            
+            display={
+                vin,
+                car_model,
+                manufacturer
+            }
+            return res.status(200).send(display);
+        }else{
+            return res.status(400).send({"message":"must provide vin number"})
+        } 
+      }
+      else{
+       let id = check.idx;
+        let getHit = await Subscription.findOne({
+          where:{
+              id_user:check.idx
+          }
+      });
+        let api_hit = getHit.content_access;
+        if(api_hit==0){
+          return res.status(200).send("Tidak bisa mendapatkan report karena sudah mencapai batas!");
+        }
+        else{
+          if (vin != null) {
+            let car_vin=await Car.findOne({
+                where:{
+                    vin:vin
+                }
+            });
+            if (!car_vin) {
+                return res.status(404).send("Car vin not found")
+            }
+            let car_model=await Car_manufacturer.findOne({
+                where:{
+                    idx:car_vin.idx_car_manufacturer,
+                },attributes:['model','year','drive','fuel_type','transmission','cylinders']
+            })
+            let car_model2=await Car_manufacturer.findOne({where:{idx:car_vin.idx_car_manufacturer}});
+            let manufacturer=await Manufacturer.findOne({
+                where:{idx:car_model2.idx_manufacturer},
+                attributes:['name']
+            })
+            
+            display={
+                vin,
+                car_model,
+                manufacturer
+            }
+              let updateHit = await sequelize.query(
+                `UPDATE subscriptions SET content_access = content_access - 1 WHERE id_user = ?;
+                `,
+                {
+                    replacements:[
+                        id
+                    ],
+                    type: QueryTypes.UPDATE 
+                }
+              )
+              return res.status(200).send(display);
+          }
+          else{
+            console.log("masuk");
+             return res.status(400).send({"message":"must provide vin number"});
+          }
+        }
+      }
+    }catch(err){
+      console.log(err);
+      return res.status(400).send('Invalid JWT Key!')
+    }    
 })
-//Kevin
+
 router.post("/manufacturer/new",async(req,res)=>{
     let inputs={...req.body};
     let id_manufacturer="";
@@ -145,6 +236,15 @@ router.post("/manufacturer/add",async(req,res)=>{
     if (!car_data) {
         return res.status(404).send("car model not found");
     }
+    let check_car_model=await Car_manufacturer.findOne({
+        where:{
+            model:inputs.car_model,
+            idx_manufacturer:id_manufacturer
+        }
+    });
+    if (!check_car_model) {
+        return res.status(403).send({"message":"cannot add car from different manufacturer"})
+    }
     let cars=[];
     for (let i = 0; i < inputs.quantity; i++) {
         let num=1;
@@ -158,7 +258,10 @@ router.post("/manufacturer/add",async(req,res)=>{
             vin:vin_number,
             idx_car_manufacturer:car_data.idx
         }) 
-        cars.push(insert);
+        let ins={
+            vin:vin_number
+        }
+        cars.push(ins);
     }
     let display={
         message:"insert car/cars successful",
@@ -168,13 +271,40 @@ router.post("/manufacturer/add",async(req,res)=>{
 });
 
 //update
-router.put("/:vin",async(req,res)=>{
-
+router.put("/plat_number/:vin",async(req,res)=>{
+    let vin=req.params.vin;
+    let plat_number=req.body.plat_number;
+    let token = req.header('x-auth-token')
+    if(!req.header('x-auth-token')){
+        return res.status(403).send({"messsage":'Authentication Required'})
+    }
+    try {
+        let userdata = jwt.verify(token, JWT_KEY)
+        if (userdata.role==1||userdata.role==3) {
+            return res.status(403).send({"messasge":"Unauthorized Access"});
+        }
+        if (userdata.authorized!=1) {
+            return res.status(403).send("Cannot post request,this user needs admin's approval.");
+        }
+        id_manufacturer=userdata.idx;
+    } catch (error) {
+        return res.status(403).send({"message":'Invalid JWT Key'})
+    }
+    let find_car=await Car.findByPk(vin);
+    if (!find_car) {
+        return res.status(404).send({"message":"Car not found"})
+    }else{
+        let updated=await Car.update({
+            plat_number:plat_number
+        },{
+            where:{
+                vin:vin
+            }
+        })
+        return res.status(200).send({"message":`plat number successfully changed to ${plat_number}`});
+    }
 })
-//delete
-router.put("/:vin",async(req,res)=>{
 
-})
 module.exports = router
 
 

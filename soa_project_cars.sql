@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2023 at 05:13 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Jun 17, 2023 at 03:11 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,18 @@ CREATE TABLE `cars` (
   `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cars`
+--
+
+INSERT INTO `cars` (`vin`, `idx_car_manufacturer`, `plat_number`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+('JTOQA75951S00001', 1, 'L123', NULL, NULL, NULL),
+('JTOQA75951S00002', 1, '', NULL, NULL, NULL),
+('JTOQA75951S00003', 1, '', NULL, NULL, NULL),
+('JTOQG9325RS00001', 2, '', NULL, NULL, NULL),
+('JTOQG9325RS00002', 2, '', NULL, NULL, NULL),
+('JTOQG9325RS00003', 2, '', NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +71,14 @@ CREATE TABLE `car_manufacturer` (
   `updatedAt` datetime DEFAULT NULL,
   `deletedAt` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `car_manufacturer`
+--
+
+INSERT INTO `car_manufacturer` (`idx`, `model`, `idx_manufacturer`, `year`, `drive`, `fuel_type`, `transmission`, `cylinders`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+(1, 'prius', 1, 2001, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL),
+(2, 'supra', 1, 1994, 'rwd', 'gas', 'a', 6, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,8 +120,30 @@ CREATE TABLE `manufacturers` (
 --
 
 INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plant_code`, `password`, `authorized`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(1, 'toyota', 'Japan', 'J', 'S', '12345678', 0, NULL, NULL, NULL),
+(1, 'toyota', 'Japan', 'J', 'S', '12345678', 1, NULL, NULL, NULL),
 (2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recalls`
+--
+
+DROP TABLE IF EXISTS `recalls`;
+CREATE TABLE `recalls` (
+  `idx` int(11) NOT NULL,
+  `idx_car_manufacturer` int(11) NOT NULL,
+  `cause` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `recalls`
+--
+
+INSERT INTO `recalls` (`idx`, `idx_car_manufacturer`, `cause`) VALUES
+(1, 1, 'infotaiment system'),
+(2, 1, 'hybrid system'),
+(3, 2, 'new stuff added (engine)');
 
 -- --------------------------------------------------------
 
@@ -182,8 +224,8 @@ CREATE TABLE `subscriptions` (
 --
 
 INSERT INTO `subscriptions` (`idx`, `id_user`, `tier`, `content_access`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(0, 1, 1, 0, '2023-06-12 22:57:08', '2023-06-16 20:07:55', '0000-00-00 00:00:00'),
-(0, 2, 1, 50, '2023-06-16 18:21:15', '2023-06-16 18:21:15', '0000-00-00 00:00:00');
+(1, 1, 1, 48, '2023-06-12 22:57:08', '2023-06-16 20:07:55', '0000-00-00 00:00:00'),
+(2, 2, 1, 50, '2023-06-16 18:21:15', '2023-06-16 18:21:15', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -233,11 +275,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idx`, `email`, `username`, `password`, `name`, `account_type`, `API_KEY`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(1, 'email@email.com', 'User1', '123', 'John', '-', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ', '2023-06-03 13:07:49', '2023-06-17 09:54:25', NULL);
+(1, 'email@email.com', 'User1', '123', 'John', '-', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDcyMzQsImV4cCI6MTY4NzAxMDgzNH0.USdh9scvSsJVtM8hvlflRFs5bRdfvPHvmuHzI5MsFiA', '2023-06-03 13:07:49', '2023-06-17 20:07:14', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cars`
+--
+ALTER TABLE `cars`
+  ADD PRIMARY KEY (`vin`);
+
+--
+-- Indexes for table `car_manufacturer`
+--
+ALTER TABLE `car_manufacturer`
+  ADD PRIMARY KEY (`idx`);
 
 --
 -- Indexes for table `damages`
@@ -252,6 +306,12 @@ ALTER TABLE `manufacturers`
   ADD PRIMARY KEY (`idx`);
 
 --
+-- Indexes for table `recalls`
+--
+ALTER TABLE `recalls`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- Indexes for table `reporter`
 --
 ALTER TABLE `reporter`
@@ -261,6 +321,12 @@ ALTER TABLE `reporter`
 -- Indexes for table `reports`
 --
 ALTER TABLE `reports`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- Indexes for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
   ADD PRIMARY KEY (`idx`);
 
 --
@@ -280,6 +346,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `car_manufacturer`
+--
+ALTER TABLE `car_manufacturer`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `damages`
 --
 ALTER TABLE `damages`
@@ -292,6 +364,12 @@ ALTER TABLE `manufacturers`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `recalls`
+--
+ALTER TABLE `recalls`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `reporter`
 --
 ALTER TABLE `reporter`
@@ -302,6 +380,12 @@ ALTER TABLE `reporter`
 --
 ALTER TABLE `reports`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subscriptions`
+--
+ALTER TABLE `subscriptions`
+  MODIFY `idx` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tiers`
