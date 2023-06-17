@@ -17,8 +17,8 @@ Damage.init(
             primaryKey:true,
             autoIncrement:true
         },
-        car_idx:{
-            type: DataTypes.INTEGER,
+        vin:{
+            type: DataTypes.STRING,
             allowNull:false,
         },
         description:{

@@ -29,14 +29,11 @@ const upload = multer({
     },
   });
 
-
-
 // post damage+picture
 // Part/bagian yg kena tabrakan, gambar damage mobil, penyebab (cause) 
 //estimated repair cost
 // gambar damaged  
 router.post("/damage",async(req,res)=>{
-  let {car_idx,type,title,location,description} = req.body
   let token = req.header('x-auth-token')
   if(!req.header('x-auth-token')){
       return res.status(400).send('Authentication token is missing')
@@ -49,9 +46,9 @@ uploadFunc(req, res, async function(err){
     if(err){
       return res.status(400).send({...err, msg:"wrong filetype"});
     }
-    let {car_idx, description, estimated} = req.body
+    let {vin, description, estimated} = req.body
     const schema = Joi.object({
-      car_idx: Joi.number().min(1).required(),
+      vin: Joi.string().required(),
       description: Joi.string().required(),
       estimated:Joi.number().min(1).required(),
   })
@@ -62,12 +59,12 @@ uploadFunc(req, res, async function(err){
   }
     // const files = fs.readdirSync("./uploads");
     // const index = files.length + 1;
-    const filename = `${car_idx}_${req.file.originalname}`;
+    const filename = `${vin}_${req.file.originalname}`;
     fs.renameSync(`./server/uploads/${req.file.filename}`, `./server/uploads/${filename}`);
 
 
     let insDamage=await Damage.create({
-      car_idx:car_idx,
+      vin:vin,
       description:description,
       estimated:estimated,
       picture:filename,
@@ -75,7 +72,7 @@ uploadFunc(req, res, async function(err){
 
     return res.status(200).send({
       Message: "Suceess Insert Damage",
-      car_idx:car_idx,
+      vin:vin,
       description:description,
       image:req.file.originalname,
     });
@@ -92,22 +89,10 @@ uploadFunc(req, res, async function(err){
   }
 });
 
-
-router.get("/test/:id?",async(req,res)=>{
-  let id = req.query.id;
-  if(id !=null){
-    return res.status(400).send("yes id : " +id)
-  }
-  else{
-    return res.status(400).send("no id :"+id)
-  }
-  
-})
-
 //post report registration
 // taxi, theft, activity, km, usage
 router.post("/",async(req,res)=>{
-    let {car_idx,type,title,location,description} = req.body
+    let {vin,type,title,location,description} = req.body
     let token = req.header('x-auth-token')
     if(!req.header('x-auth-token')){
         return res.status(400).send('Authentication token is missing')
@@ -116,7 +101,7 @@ router.post("/",async(req,res)=>{
       let reporterdata = jwt.verify(token, JWT_KEY);
         if(reporterdata.role == 2 && reporterdata.authorized == 1){
               const schema = Joi.object({
-              car_idx: Joi.number().min(1).required(),
+              vin: Joi.string().required(),
               type: Joi.string().valid("taxi", "theft", "activity", "km", "usage").insensitive().required(), 
               title: Joi.string().required(),
               location: Joi.string().required(),
@@ -128,22 +113,25 @@ router.post("/",async(req,res)=>{
               return res.status(403).send(error.toString())
           }
           let insReport=await Report.create({
-            car_idx:car_idx,
+            vin:vin,
             type:type,
             title:title,
             location:location,
             reporter_id:reporterdata.idx,
+            reporter_name:reporterdata.username,
             description:description,
         });
+        const currentDate = new Date();
+        const formattedDate = currentDate.toISOString().split('T')[0];
         return res.status(200).send({
           Message: 'Success Insert Report',
-          Car_idx:car_idx,
+          vin:vin,
           Type:type,
           Title:title,
           Location:location,
           Description:description,
-          Reporter_id:reporterdata.idx,
           Reporter_Name:reporterdata.username,
+          Created_At: formattedDate,
       })
         }
         else{
@@ -160,7 +148,7 @@ router.post("/",async(req,res)=>{
 
 //get all report details
 router.get("/:id?",async(req,res)=>{
-  let idxcar= req.query.id
+  let idxcar= req.query.vin
   let token = req.header('x-auth-token')
   if(!req.header('x-auth-token')){
       return res.status(400).send('Authentication token is missing')
@@ -169,14 +157,20 @@ router.get("/:id?",async(req,res)=>{
     let check = jwt.verify(token, JWT_KEY);
     if(check.role != 1){
       if (idxcar!=null) {
-        let getreport = await Report.findAll({ where: { car_idx: idxcar } });
+        let getreport = await Report.findAll({
+          where: { vin: idxcar },
+          attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
+        });
+
           if (!getreport) {
               return res.status(404).send("Report not found")
           }
           return res.status(200).send(getreport);
       }else{
-          return res.status(200).send(await Report.findAll());
-      }
+          return res.status(200).send(await Report.findAll({
+            attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
+          }));
+        } 
     }
     else{
      let id = check.idx;
@@ -191,7 +185,10 @@ router.get("/:id?",async(req,res)=>{
       }
       else{
         if (idxcar != null) {
-          let getreport = await Report.findAll({ where: { car_idx: idxcar } });
+          let getreport = await Report.findAll({
+            where: { vin: idxcar },
+            attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
+          });
             if (!getreport) {
                 return res.status(404).send("Report not found")
             }
@@ -219,15 +216,101 @@ router.get("/:id?",async(req,res)=>{
                 type: QueryTypes.UPDATE 
             }
           )
-            return res.status(200).send(await Report.findAll());
+            return res.status(200).send(await Report.findAll({
+            attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
+            }));
         }
       }
     }
-
   }catch(err){
     console.log(err);
     return res.status(400).send('Invalid JWT Key!')
   }
+});
+
+
+//get all damage 
+router.get("/damage/detail/:vin?",async(req,res)=>{
+  let idxcar= req.query.vin
+  let token = req.header('x-auth-token')
+  if(!req.header('x-auth-token')){
+      return res.status(400).send('Authentication token is missing')
+  }
+  try{
+    let check = jwt.verify(token, JWT_KEY);
+    if(check.role != 1){
+      console.log("bukan user");
+      if (idxcar!=null) {
+        let getDamage = await Damage.findAll({
+          where: { vin: idxcar },
+          attributes: ['vin', 'description','estimated']
+        });
+
+          if (!getDamage) {
+              return res.status(404).send("Damage not found")
+          }
+          return res.status(200).send(getDamage);
+      }else{
+          return res.status(200).send(await Damage.findAll({
+            attributes: ['vin', 'description','estimated']
+          }));
+        } 
+    }
+    else{
+     let id = check.idx;
+      let getHit = await Subscription.findOne({
+        where:{
+            id_user:check.idx
+        }
+    });
+      let api_hit = getHit.content_access;
+      if(api_hit==0){
+        return res.status(200).send("Tidak bisa mendapatkan detail damage karena sudah mencapai batas!");
+      }
+      else{
+        if (idxcar != null) {
+          let getDamage = await Damage.findAll({
+            where: { vin: idxcar },
+            attributes: ['vin', 'description','estimated']
+          });
+            if (!getDamage) {
+                return res.status(404).send("Damage not found")
+            }
+            let updateHit = await sequelize.query(
+              `UPDATE subscriptions SET content_access = content_access - 1 WHERE id_user = ?;
+              `,
+              {
+                  replacements:[
+                      id
+                  ],
+                  type: QueryTypes.UPDATE 
+              }
+            )
+            return res.status(200).send(getDamage);
+        }
+        else{
+          console.log("masuk");
+          let updateHit = await sequelize.query(
+            `UPDATE subscriptions SET content_access = content_access - 1 WHERE id_user = ?;
+            `,
+            {
+                replacements:[
+                    id
+                ],
+                type: QueryTypes.UPDATE 
+            }
+          )
+            return res.status(200).send(await Damage.findAll({
+              attributes: ['vin', 'description','estimated']
+            }));
+        }
+      }
+    }
+  }catch(err){
+    console.log(err);
+    return res.status(400).send('Invalid JWT Key!')
+  }
+
 });
 
 module.exports = router

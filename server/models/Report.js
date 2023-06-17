@@ -18,7 +18,7 @@ Report.init(
             primaryKey:true,
             autoIncrement:true
         },
-        car_idx:{
+        vin:{
             type: DataTypes.INTEGER,
             allowNull:false,
         },
@@ -35,6 +35,10 @@ Report.init(
             allowNull:false,
         },
         reporter_id:{
+            type: DataTypes.INTEGER,
+            allowNull:false,
+        },
+        reporter_name:{
             type: DataTypes.INTEGER,
             allowNull:false,
         },
