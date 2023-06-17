@@ -26,10 +26,6 @@ Reporter.init(
             type: DataTypes.STRING,
             allowNull:false,
         },
-        name:{
-            type: DataTypes.STRING,
-            allowNull:false,
-        },
         company:{
             type: DataTypes.STRING,
             allowNull:false,

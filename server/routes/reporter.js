@@ -66,14 +66,14 @@ router.post("/login",async(req,res)=>{
         })
     let message = `Reporter ${username} berhasil login`;
     let token = jwt.sign({
-        id_reporter: sel[0].idx,
+        idx: sel[0].idx,
         username:username,
-        role: 2 // reporter role
+        role: 2, // reporter role
+        authorized: sel[0].authorized
     }, JWT_KEY, {expiresIn: '3600s'})
     return res.status(200).send({
-        message: message,
-        token:token,
-        id:sel[0].idx,
+        Message: message,
+        Token:token,
     })
 })
 module.exports = router

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2023 at 05:53 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jun 17, 2023 at 05:13 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,6 +63,21 @@ CREATE TABLE `car_manufacturer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `damages`
+--
+
+DROP TABLE IF EXISTS `damages`;
+CREATE TABLE `damages` (
+  `idx` int(50) NOT NULL,
+  `car_idx` int(50) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `estimated` int(50) NOT NULL,
+  `picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manufacturers`
 --
 
@@ -91,6 +106,63 @@ INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plan
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reporter`
+--
+
+DROP TABLE IF EXISTS `reporter`;
+CREATE TABLE `reporter` (
+  `idx` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `company` varchar(255) NOT NULL,
+  `authorized` int(11) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `DeletedAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reporter`
+--
+
+INSERT INTO `reporter` (`idx`, `name`, `username`, `password`, `company`, `authorized`, `createdAt`, `updatedAt`, `DeletedAt`) VALUES
+(1, 'Will', 'Reporter1', '123', 'Kompas Gramedia', 0, '2023-06-09 15:42:23', '2023-06-09 15:42:23', NULL),
+(2, 'Allan', 'Reporter2', '123', 'Tempo Media Group', 1, '2023-06-09 15:43:35', '2023-06-09 15:43:35', NULL),
+(3, 'Maya', 'Reporter3', '123', 'Antara News Agency', 1, '2023-06-09 15:43:42', '2023-06-09 15:43:42', NULL),
+(4, 'Mei', 'Reporter4', '123', 'Antara News Agency', 0, '2023-06-17 09:44:16', '2023-06-17 09:44:16', NULL),
+(5, 'Malv', 'Malv123', '123', 'CNN Indonesia', 1, '2023-06-17 09:45:04', '2023-06-17 09:45:04', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+DROP TABLE IF EXISTS `reports`;
+CREATE TABLE `reports` (
+  `idx` int(11) NOT NULL,
+  `car_idx` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `reporter_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `deleteAt` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`idx`, `car_idx`, `type`, `title`, `location`, `reporter_id`, `description`, `createdAt`, `updatedAt`, `deleteAt`) VALUES
+(1, 6, 'Taxi', 'Taxi Mobil', 'Surabaya', 5, 'Mobil ini pernah digunakan sebagai taxi mobil', '2023-06-17 09:52:51', '2023-06-17 09:52:51', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subscriptions`
 --
 
@@ -100,16 +172,25 @@ CREATE TABLE `subscriptions` (
   `id_user` int(225) NOT NULL,
   `tier` int(1) NOT NULL,
   `content_access` int(225) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `deleted_at` datetime NOT NULL
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `deletedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`idx`, `id_user`, `tier`, `content_access`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+(0, 1, 1, 0, '2023-06-12 22:57:08', '2023-06-16 20:07:55', '0000-00-00 00:00:00'),
+(0, 2, 1, 50, '2023-06-16 18:21:15', '2023-06-16 18:21:15', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `tiers`
 --
+
 DROP TABLE IF EXISTS `tiers`;
 CREATE TABLE `tiers` (
   `idx` int(225) NOT NULL,
@@ -117,6 +198,21 @@ CREATE TABLE `tiers` (
   `price` int(225) NOT NULL,
   `content_access` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tiers`
+--
+
+INSERT INTO `tiers` (`idx`, `tier_name`, `price`, `content_access`) VALUES
+(1, 'Beginner', 10000, 50),
+(2, 'Middle', 20000, 100),
+(3, 'Expert', 50000, 250);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -137,20 +233,40 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idx`, `email`, `username`, `password`, `name`, `account_type`, `API_KEY`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(1, 'email@email.com', 'User1', '123', 'John', '-', '', '2023-06-03 13:07:49', '2023-06-03 13:07:49', NULL);
+(1, 'email@email.com', 'User1', '123', 'John', '-', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ', '2023-06-03 13:07:49', '2023-06-17 09:54:25', NULL);
 
-INSERT INTO `tiers` (`idx`, `tier_name`, `price`, `content_access`) VALUES
-(1, 'Beginner', 10000, 50),
-(2, 'Middle', 20000, 100),
-(3, 'Expert', 50000, 250);
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `damages`
+--
+ALTER TABLE `damages`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- Indexes for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- Indexes for table `reporter`
+--
+ALTER TABLE `reporter`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`idx`);
+
+--
+-- Indexes for table `tiers`
+--
+ALTER TABLE `tiers`
   ADD PRIMARY KEY (`idx`);
 
 --
@@ -164,10 +280,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `damages`
+--
+ALTER TABLE `damages`
+  MODIFY `idx` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
   MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `reporter`
+--
+ALTER TABLE `reporter`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tiers`
+--
+ALTER TABLE `tiers`
+  MODIFY `idx` int(225) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

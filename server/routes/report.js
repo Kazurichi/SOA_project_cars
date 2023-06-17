@@ -2,20 +2,24 @@ const express = require('express')
 const router = express.Router()
 const Report=require('../models/Report');
 const Damage=require('../models/Damage');
+const User=require('../models/User');
+
+const Subscription=require('../models/Subscription');
 const multer = require("multer");
 const fs = require("fs");
 const { log } = require('console');
 const JWT_KEY = 'SOAcars';
 const jwt = require("jsonwebtoken");
 const Joi = require('joi').extend(require('@joi/date'));
-const bodyParser = require("body-parser");
-const app = express();
+const { getDB } = require("../config/sequelize");
+const sequelize = getDB();
+const {QueryTypes} = require('sequelize');
 
 router.use(express.json()) 
 router.use(express.urlencoded({ extended: true }));
 
 const upload = multer({
-    dest: "./uploads",
+    dest: "./server/uploads",
     limits: { fileSize: 10000000 },
     fileFilter: function (req, file, cb) {
       if (file.mimetype != "image/png" && file.mimetype !== "image/jpeg" && file.mimetype !== "image/jpg") {
@@ -39,7 +43,7 @@ router.post("/damage",async(req,res)=>{
   }
   try{
     let reporterdata = jwt.verify(token, JWT_KEY);
-    if(reporterdata.role == 2){
+    if(reporterdata.role == 2 && reporterdata.authorized == 1){
       const uploadFunc = upload.single("image");
 uploadFunc(req, res, async function(err){
     if(err){
@@ -59,7 +63,7 @@ uploadFunc(req, res, async function(err){
     // const files = fs.readdirSync("./uploads");
     // const index = files.length + 1;
     const filename = `${car_idx}_${req.file.originalname}`;
-    fs.renameSync(`./uploads/${req.file.filename}`, `./uploads/${filename}`);
+    fs.renameSync(`./server/uploads/${req.file.filename}`, `./server/uploads/${filename}`);
 
 
     let insDamage=await Damage.create({
@@ -89,7 +93,16 @@ uploadFunc(req, res, async function(err){
 });
 
 
-
+router.get("/test/:id?",async(req,res)=>{
+  let id = req.query.id;
+  if(id !=null){
+    return res.status(400).send("yes id : " +id)
+  }
+  else{
+    return res.status(400).send("no id :"+id)
+  }
+  
+})
 
 //post report registration
 // taxi, theft, activity, km, usage
@@ -101,7 +114,7 @@ router.post("/",async(req,res)=>{
     }
     try{
       let reporterdata = jwt.verify(token, JWT_KEY);
-        if(reporterdata.role == 2){
+        if(reporterdata.role == 2 && reporterdata.authorized == 1){
               const schema = Joi.object({
               car_idx: Joi.number().min(1).required(),
               type: Joi.string().valid("taxi", "theft", "activity", "km", "usage").insensitive().required(), 
@@ -119,17 +132,18 @@ router.post("/",async(req,res)=>{
             type:type,
             title:title,
             location:location,
-            reporter_id:reporterdata.id_reporter,
+            reporter_id:reporterdata.idx,
             description:description,
         });
         return res.status(200).send({
-          message: 'Success Insert Report',
-          car_idx:car_idx,
-          type:type,
-          title:title,
-          location:location,
-          reporter_id:reporterdata.id_reporter,
-          description:description,
+          Message: 'Success Insert Report',
+          Car_idx:car_idx,
+          Type:type,
+          Title:title,
+          Location:location,
+          Description:description,
+          Reporter_id:reporterdata.idx,
+          Reporter_Name:reporterdata.username,
       })
         }
         else{
@@ -144,16 +158,9 @@ router.post("/",async(req,res)=>{
     }
 });
 
-
-
-
 //get all report details
 router.get("/:id?",async(req,res)=>{
-  //cek token
-  //cek user valid
-  //cek user punya subs
-  //if not null
-  let idxcar= req.params.id
+  let idxcar= req.query.id
   let token = req.header('x-auth-token')
   if(!req.header('x-auth-token')){
       return res.status(400).send('Authentication token is missing')
@@ -172,7 +179,49 @@ router.get("/:id?",async(req,res)=>{
       }
     }
     else{
-      return res.status(200).send("user");
+     let id = check.idx;
+      let getHit = await Subscription.findOne({
+        where:{
+            id_user:check.idx
+        }
+    });
+      let api_hit = getHit.content_access;
+      if(api_hit==0){
+        return res.status(200).send("Tidak bisa mendapatkan report karena sudah mencapai batas!");
+      }
+      else{
+        if (idxcar != null) {
+          let getreport = await Report.findAll({ where: { car_idx: idxcar } });
+            if (!getreport) {
+                return res.status(404).send("Report not found")
+            }
+            let updateHit = await sequelize.query(
+              `UPDATE subscriptions SET content_access = content_access - 1 WHERE id_user = ?;
+              `,
+              {
+                  replacements:[
+                      id
+                  ],
+                  type: QueryTypes.UPDATE 
+              }
+            )
+            return res.status(200).send(getreport);
+        }
+        else{
+          console.log("masuk");
+          let updateHit = await sequelize.query(
+            `UPDATE subscriptions SET content_access = content_access - 1 WHERE id_user = ?;
+            `,
+            {
+                replacements:[
+                    id
+                ],
+                type: QueryTypes.UPDATE 
+            }
+          )
+            return res.status(200).send(await Report.findAll());
+        }
+      }
     }
 
   }catch(err){
@@ -180,10 +229,5 @@ router.get("/:id?",async(req,res)=>{
     return res.status(400).send('Invalid JWT Key!')
   }
 });
-
-
-
-
-
 
 module.exports = router

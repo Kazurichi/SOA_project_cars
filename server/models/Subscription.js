@@ -16,7 +16,7 @@ Subscription.init(
             primaryKey:true,
             autoIncrement:true
         },
-        idx_user:{
+        id_user:{
             type: DataTypes.INTEGER,
             allowNull:false,
         },

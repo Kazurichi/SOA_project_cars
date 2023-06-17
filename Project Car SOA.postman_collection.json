@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6b6fa447-b41b-47da-bbf7-26a56ea87c4d",
+		"_postman_id": "b97c2efb-d266-44e1-a416-caaeb5b21526",
 		"name": "Project Car SOA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "26946801"
+		"_exporter_id": "26881521"
 	},
 	"item": [
 		{
@@ -434,132 +434,992 @@
 							"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOQA7595RS00010\",\n            \"idx_car_manufacturer\": 0\n        },\n        {\n            \"vin\": \"JTOQA7595RS00011\",\n            \"idx_car_manufacturer\": 0\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "get all cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "get one car",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/car?vin=JTOQA7595RS00001",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car"
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00001"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-dSzR1J8yx0F3o3pZAlVFVUtT/xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Jun 2023 04:00:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"vin\": \"JTOQA7595RS00001\",\n    \"idx_car_manufacturer\": 1,\n    \"plat_number\": null\n}"
+						},
+						{
+							"name": "get all cars",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/car",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car"
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00001",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d6-tNYmYZFbpaPzEvm6fD3lzCJPODs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Jun 2023 04:00:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00003\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    }\n]"
+						}
+					]
 				}
 			]
 		},
 		{
-			"name": "get all cars",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": [
+			"name": "Report + Reporter",
+			"item": [
 				{
-					"name": "get one car",
-					"originalRequest": {
-						"method": "GET",
+					"name": "Login",
+					"request": {
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "Malv123",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:3000/car?vin=JTOQA7595RS00001",
+							"raw": "localhost:3000/reporter/login",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"car"
-							],
-							"query": [
-								{
-									"key": "vin",
-									"value": "JTOQA7595RS00001"
-								}
+								"reporter",
+								"login"
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
-						},
-						{
-							"key": "Content-Length",
-							"value": "70"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"46-dSzR1J8yx0F3o3pZAlVFVUtT/xw\""
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 03 Jun 2023 04:00:34 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "Malv123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ff-jXHyWAcd0oXQoW9bVTMGp4Hgxik\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:45:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Message\": \"Reporter Malv123 berhasil login\",\n    \"Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"vin\": \"JTOQA7595RS00001\",\n    \"idx_car_manufacturer\": 1,\n    \"plat_number\": null\n}"
+					]
 				},
 				{
-					"name": "get all cars",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
+					"name": "Post Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDE4MSwiZXhwIjoxNjg2OTczNzgxfQ.E1lstywWOCOb6RqXNt6__TFp6xzCrvswKt-Y9Nvpho4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "car_idx",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "Taxi",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "Taxi Mobil",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Surabaya",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+									"type": "text"
+								}
+							]
+						},
 						"url": {
-							"raw": "localhost:3000/car",
+							"raw": "localhost:3000/report",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"car"
+								"report"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post Report",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDE4MSwiZXhwIjoxNjg2OTczNzgxfQ.E1lstywWOCOb6RqXNt6__TFp6xzCrvswKt-Y9Nvpho4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "car_idx",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "Taxi",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Taxi Mobil",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Surabaya",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d2-g2DFA+e1AcTDYWihRT8Tss7HcoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:52:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Message\": \"Success Insert Report\",\n    \"Car_idx\": \"6\",\n    \"Type\": \"Taxi\",\n    \"Title\": \"Taxi Mobil\",\n    \"Location\": \"Surabaya\",\n    \"Description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n    \"Reporter_id\": 5,\n    \"Reporter_Name\": \"Malv123\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Report",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3000/report",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report"
 							],
 							"query": [
 								{
-									"key": "vin",
-									"value": "JTOQA7595RS00001",
+									"key": "id",
+									"value": "4",
 									"disabled": true
 								}
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "X-Powered-By",
-							"value": "Express"
+							"name": "Single Report",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "localhost:3000/report?id=4",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"be-9KS/t2tLii4hj3nC5TBfm8PSVKs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:53:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idx\": 4,\n        \"car_idx\": 4,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:16.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:16.000Z\"\n    }\n]"
 						},
 						{
-							"key": "Content-Type",
-							"value": "application/json; charset=utf-8"
+							"name": "All Report",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "localhost:3000/report",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3167"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5f-f1KK1YEtTeq9O/mRiRBwC77+Gqs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:53:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idx\": 1,\n        \"car_idx\": 1,\n        \"type\": \"0\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:06:25.000Z\",\n        \"updatedAt\": \"2023-06-16T05:06:25.000Z\"\n    },\n    {\n        \"idx\": 2,\n        \"car_idx\": 2,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:08:09.000Z\",\n        \"updatedAt\": \"2023-06-16T05:08:09.000Z\"\n    },\n    {\n        \"idx\": 3,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:00.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:00.000Z\"\n    },\n    {\n        \"idx\": 4,\n        \"car_idx\": 4,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:16.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:16.000Z\"\n    },\n    {\n        \"idx\": 5,\n        \"car_idx\": 1,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:17.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:17.000Z\"\n    },\n    {\n        \"idx\": 6,\n        \"car_idx\": 2,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:18.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:18.000Z\"\n    },\n    {\n        \"idx\": 7,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:49.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:49.000Z\"\n    },\n    {\n        \"idx\": 8,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:32.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:32.000Z\"\n    },\n    {\n        \"idx\": 9,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:37.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:37.000Z\"\n    },\n    {\n        \"idx\": 10,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:38.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:38.000Z\"\n    },\n    {\n        \"idx\": 11,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:54.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:54.000Z\"\n    },\n    {\n        \"idx\": 12,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:59.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:59.000Z\"\n    },\n    {\n        \"idx\": 13,\n        \"car_idx\": 1,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:51:06.000Z\",\n        \"updatedAt\": \"2023-06-16T08:51:06.000Z\"\n    },\n    {\n        \"idx\": 14,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:51:39.000Z\",\n        \"updatedAt\": \"2023-06-17T02:51:39.000Z\"\n    },\n    {\n        \"idx\": 15,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:52:12.000Z\",\n        \"updatedAt\": \"2023-06-17T02:52:12.000Z\"\n    },\n    {\n        \"idx\": 16,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:52:51.000Z\",\n        \"updatedAt\": \"2023-06-17T02:52:51.000Z\"\n    }\n]"
 						},
 						{
-							"key": "Content-Length",
-							"value": "214"
-						},
-						{
-							"key": "ETag",
-							"value": "W/\"d6-tNYmYZFbpaPzEvm6fD3lzCJPODs\""
-						},
-						{
-							"key": "Date",
-							"value": "Sat, 03 Jun 2023 04:00:55 GMT"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Keep-Alive",
-							"value": "timeout=5"
+							"name": "User report (No Access)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "localhost:3000/report",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a-pQK/JVSYhjRuGOAHUIH3B9+TeBQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:55:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "Tidak bisa mendapatkan report karena sudah mencapai batas!"
 						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    },\n    {\n        \"vin\": \"JTOQA7595RS00003\",\n        \"idx_car_manufacturer\": 1,\n        \"plat_number\": null\n    }\n]"
+					]
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "email@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "email@email.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "215"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d7-j6aOzCcuPsqxQDqgg+GalmU6wgo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:54:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Welcome John\",\n    \"API_KEY\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Damage",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDU3NywiZXhwIjoxNjg2OTc0MTc3fQ.VzjB5IeGSxy4Z4JVVVVUC9CXr4W7XxDS8Iex6bULukg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "car_idx",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+									"type": "text"
+								},
+								{
+									"key": "estimated",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--wing-left.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/report/damage",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"damage"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post Damage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDU3NywiZXhwIjoxNjg2OTc0MTc3fQ.VzjB5IeGSxy4Z4JVVVVUC9CXr4W7XxDS8Iex6bULukg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "car_idx",
+											"value": "9",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+											"type": "text"
+										},
+										{
+											"key": "estimated",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--wing-left.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report/damage",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"damage"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "173"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ad-ZvxfG/AVIiWqs1CSmW2iy5tUFHU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:57:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Message\": \"Suceess Insert Damage\",\n    \"car_idx\": \"9\",\n    \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n    \"image\": \"volkswagen-passat--wing-left.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Malv",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "Malv123",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Pt. Company",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/reporter/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"reporter",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Malv",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Malv123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Pt. Company",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-j5iggtBkmsWWcf490vB1J1oXlk4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 02:45:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Reporter Registered Successfully\",\n    \"username\": \"Malv123\",\n    \"name\": \"Malv\",\n    \"company\": \"Pt. Company\"\n}"
+						}
+					]
 				}
 			]
 		}
