@@ -77,28 +77,38 @@ router.post("/login",async(req,res)=>{
     let loginUser= await User.findOne({
         where:{
             email:email,
-            password:password
         }
     });
 
-    let token = jwt.sign({
-        idx:loginUser.idx,
-        username:loginUser.username,
-        role:1 //user role
-    }, JWT_KEY, {expiresIn: '3600s'})
-
-    let updateUser = await User.update({
-        API_KEY:token
-    },{
-        where:{
-            email:email
+    if(loginUser){
+        if(loginUser.password==password){
+            let token = jwt.sign({
+                idx:loginUser.idx,
+                username:loginUser.username,
+                role:1 //user role
+            }, JWT_KEY, {expiresIn: '3600s'})
+        
+            let updateUser = await User.update({
+                API_KEY:token
+            },{
+                where:{
+                    email:email
+                }
+            });
+        
+            return res.status(200).send({
+                message:`Welcome ${loginUser.name}`,
+                API_KEY:token
+            });
         }
-    });
-
-    return res.status(200).send({
-        message:`Welcome ${loginUser.name}`,
-        API_KEY:token
-    });
+        return res.status(400).send({
+            message:`Wrong Password`,
+        }); 
+    }
+    return res.status(404).send({
+        message:`Not Found`,
+    }); 
+    
 
 });
 
