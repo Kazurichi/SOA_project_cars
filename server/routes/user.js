@@ -77,34 +77,66 @@ router.post("/login",async(req,res)=>{
     let loginUser= await User.findOne({
         where:{
             email:email,
-            password:password
         }
     });
 
-    let token = jwt.sign({
-        idx:loginUser.idx,
-        username:loginUser.username,
-        role:1 //user role
-    }, JWT_KEY, {expiresIn: '3600s'})
-
-    let updateUser = await User.update({
-        API_KEY:token
-    },{
-        where:{
-            email:email
+    if(loginUser){
+        if(loginUser.password==password){
+            let token = jwt.sign({
+                idx:loginUser.idx,
+                username:loginUser.username,
+                role:1 //user role
+            }, JWT_KEY, {expiresIn: '3600s'})
+        
+            let updateUser = await User.update({
+                API_KEY:token
+            },{
+                where:{
+                    email:email
+                }
+            });
+        
+            return res.status(200).send({
+                message:`Welcome ${loginUser.name}`,
+                API_KEY:token
+            });
         }
-    });
-
-    return res.status(200).send({
-        message:`Welcome ${loginUser.name}`,
-        API_KEY:token
-    });
+        return res.status(400).send({
+            message:`Wrong Password`,
+        }); 
+    }
+    return res.status(404).send({
+        message:`Not Found`,
+    }); 
+    
 
 });
 
 //Felix
-router.get("/tiers",async(req,res)=>{
+router.get("/tiers/:id",async(req,res)=>{
+    const {id} = req.params;
+    let tiers = await Tier.findOne({
+        where:{
+            idx:id
+        }
+    });
+
+    if(tiers){
+        return res.status(200).send({
+            tiers
+        });
+    }
+    else{
+        return res.status(404).send({
+            message:"No tier found"
+        });
+    }
+    
+});
+
+router.get("/tiers/",async(req,res)=>{
     let tiers = await Tier.findAll();
+
     if(tiers.length>0){
         return res.status(200).send({
             tiers
@@ -118,6 +150,7 @@ router.get("/tiers",async(req,res)=>{
     
 });
 
+
 //Felix
 router.post("/subscription",async(req,res)=>{
     let token = req.header('x-auth-token');
@@ -125,68 +158,72 @@ router.post("/subscription",async(req,res)=>{
     if(!req.header('x-auth-token')){
         return res.status(400).send('Authentication token is missing');
     }
-    let userdata = jwt.verify(token, JWT_KEY);
+    try {
+        let userdata = jwt.verify(token, JWT_KEY);
+        if(userdata.role == 1){
+            let {tier} = req.body;
     
-    if(userdata.role == 1){
-        let {tier} = req.body;
-
-        const schema = Joi.object({
-            tier:Joi.string().required(),
-        });
-
-        try {
-            await schema.validateAsync(req.body);
-        } catch (error) {
-            return res.status(403).send(error.toString())
-        }
-
-        let getTier = await Tier.findOne({
-            where:{
-                idx:tier
+            const schema = Joi.object({
+                tier:Joi.string().required(),
+            });
+    
+            try {
+                await schema.validateAsync(req.body);
+            } catch (error) {
+                return res.status(403).send(error.toString())
             }
-        });
-
-        let subscription = await Subsrciption.findOne({
-            where:{
-                id_user:userdata.idx
-            }
-        });
-
-        let amount;
-
-        if(subscription){
-            amount = subscription.content_access + getTier.content_access;
-
-            let updateSubscribe = await Subscription.update({
-                content_access: amount
-            },{
+    
+            let getTier = await Tier.findOne({
+                where:{
+                    idx:tier
+                }
+            });
+    
+            let subscription = await Subsrciption.findOne({
                 where:{
                     id_user:userdata.idx
                 }
             });
-            
-        }
-        else{
-            amount =  getTier.content_access;
-
-            let insertSubscribe = await Subscription.create({
-                id_user:userdata.idx,
-                tier:getTier.idx,
-                content_access: amount
+    
+            let amount;
+    
+            if(subscription){
+                amount = subscription.content_access + getTier.content_access;
+    
+                let updateSubscribe = await Subscription.update({
+                    content_access: amount
+                },{
+                    where:{
+                        id_user:userdata.idx
+                    }
+                });
+                
+            }
+            else{
+                amount =  getTier.content_access;
+    
+                let insertSubscribe = await Subscription.create({
+                    id_user:userdata.idx,
+                    tier:getTier.idx,
+                    content_access: amount
+                });
+            }
+            return res.status(200).send({
+                message:"Subscribe",
+                tier:tier,
+                price:getTier.price,
+                left_access:`${amount} `
             });
         }
-        return res.status(200).send({
-            message:"Subscribe",
-            tier:tier,
-            price:getTier.price,
-            left_access:`${amount} `
-        });
+        else{
+            return res.status(403).send({
+                message:"Unauthorized"
+            });
+        }
+    } catch (error) {
+        return res.status(400).send({message:"Token Expired"});
     }
-    else{
-        return res.status(403).send({
-            message:"Unauthorized"
-        });
-    }
+    
 });
 
 //Felix
@@ -241,7 +278,7 @@ router.get("/profile", async(req,res)=>{
             });
         }
     } catch (error) {
-        return res.status(400).send({error});
+        return res.status(400).send({message:"Token Expired"});
     }
     
 });
