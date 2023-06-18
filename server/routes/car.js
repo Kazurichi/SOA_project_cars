@@ -31,7 +31,7 @@ router.get("/:vin?",async(req,res)=>{
                 }
             });
             if (!car_vin) {
-                return res.status(404).send("Car vin not found")
+                return res.status(404).send({"message":"Car vin not found"})
             }
             let car_model=await Car_manufacturer.findOne({
                 where:{
@@ -73,7 +73,7 @@ router.get("/:vin?",async(req,res)=>{
                 }
             });
             if (!car_vin) {
-                return res.status(404).send("Car vin not found")
+                return res.status(404).send({"message":"Car vin not found"})
             }
             let car_model=await Car_manufacturer.findOne({
                 where:{
@@ -176,7 +176,7 @@ router.post("/manufacturer/new",async(req,res)=>{
         });
         
         if (api_car.data.length==0) {
-            return res.status(404).send("car not found");
+            return res.status(404).send({"message":"car not found"});
         }else{
             let insert=await Car_manufacturer.create({
                 model:api_car.data[0].model,
@@ -188,7 +188,16 @@ router.post("/manufacturer/new",async(req,res)=>{
                 cylinders:api_car.data[0].cylinders,
             });
 
-            return res.status(200).send(insert);
+            let display={
+                message:"Added model to your lineup",
+                model:api_car.data[0].model,
+                fuel_type:api_car.data[0].fuel_type,
+                year:api_car.data[0].year,
+                drive:api_car.data[0].drive,
+                transmission:api_car.data[0].transmission,
+                cylinders:api_car.data[0].cylinders,
+            }
+            return res.status(201).send(display);
         }
 
     }else{
@@ -197,7 +206,6 @@ router.post("/manufacturer/new",async(req,res)=>{
 
 });
 
-//Kevin
 router.post("/manufacturer/add",async(req,res)=>{
     let inputs={...req.body};
     let id_manufacturer="";
@@ -267,7 +275,7 @@ router.post("/manufacturer/add",async(req,res)=>{
         message:"insert car/cars successful",
         cars
     }
-    return res.status(200).send(display);
+    return res.status(201).send(display);
 });
 
 //update

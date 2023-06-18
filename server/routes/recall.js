@@ -27,7 +27,7 @@ router.get("/:model?",async(req,res)=>{
                 }
             });
             if (!car_man) {
-                return res.status(404).send("Car model not found")
+                return res.status(404).send({"message":"Car model not found"})
             }
             let get_recall=await Recall.findAll({
                 where:{idx_car_manufacturer:car_man.idx}
@@ -89,7 +89,7 @@ router.get("/:model?",async(req,res)=>{
                 }
             });
             if (!car_man) {
-                return res.status(404).send("Car model not found")
+                return res.status(404).send({"message":"Car model not found"})
             }
             let get_recall=await Recall.findAll({
                 where:{idx_car_manufacturer:car_man.idx}

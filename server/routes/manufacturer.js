@@ -17,9 +17,17 @@ router.post("/register",async(req,res)=>{
     try {
         await schema.validateAsync(req.body)
     } catch (error) {
-        return res.status(400).send(error.message);
+        return res.status(400).send({"message":error.details[0].message});
     }
-
+    let check_manufacturer=await Manufacturer.findOne({
+        where:{
+            name:inputs.name,
+            plant_code:inputs.plant_code
+        }
+    })
+    if (check_manufacturer) {
+        return res.status(400).send({"message":"manufacturer cannot have the same plant code"});
+    }
     let insert=await Manufacturer.create({
         name:inputs.name,
         country_origin:inputs.country_origin,
@@ -37,24 +45,25 @@ router.post("/register",async(req,res)=>{
         password:inputs.password,
         authorized:"not authorized"
     };
-    return res.status(200).send(display)
+    return res.status(201).send(display)
 });
 
 router.post("/login",async(req,res)=>{
     let inputs={...req.body}
     
-    if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null) {
-        return res.status(400).send("must fill name/password");
+    if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null||inputs.plant_code==null||inputs.plant_code==null) {
+        return res.status(400).send({"message":"must fill name/password"});
     }
     let find_manufacturer=await Manufacturer.findOne({
         where:{
             name:inputs.name,
-            password:inputs.password
+            password:inputs.password,
+            plant_code:inputs.plant_code
         }
     });
 
     if (!find_manufacturer) {
-        return res.status(400).send("invalid name/password");
+        return res.status(400).send({"message":"name/password/plant_code is invalid"});
     }
 
     let token = jwt.sign({

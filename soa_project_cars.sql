@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2023 at 03:11 PM
+-- Generation Time: Jun 18, 2023 at 03:10 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -44,6 +44,8 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`vin`, `idx_car_manufacturer`, `plat_number`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
+('JTOAGB32ARS00004', 2, '', NULL, NULL, NULL),
+('JTOAGB32ARS00005', 2, '', NULL, NULL, NULL),
 ('JTOQA75951S00001', 1, 'L123', NULL, NULL, NULL),
 ('JTOQA75951S00002', 1, '', NULL, NULL, NULL),
 ('JTOQA75951S00003', 1, '', NULL, NULL, NULL),
@@ -78,7 +80,11 @@ CREATE TABLE `car_manufacturer` (
 
 INSERT INTO `car_manufacturer` (`idx`, `model`, `idx_manufacturer`, `year`, `drive`, `fuel_type`, `transmission`, `cylinders`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 (1, 'prius', 1, 2001, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL),
-(2, 'supra', 1, 1994, 'rwd', 'gas', 'a', 6, NULL, NULL, NULL);
+(2, 'supra', 1, 1994, 'rwd', 'gas', 'a', 6, NULL, NULL, NULL),
+(3, 'focus', 1, 2000, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL),
+(4, 'civic del sol', 1, 1994, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL),
+(5, 'camry', 1, 1993, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL),
+(6, 'focus', 1, 2000, 'fwd', 'gas', 'a', 4, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -121,7 +127,10 @@ CREATE TABLE `manufacturers` (
 
 INSERT INTO `manufacturers` (`idx`, `name`, `country_origin`, `region_id`, `plant_code`, `password`, `authorized`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
 (1, 'toyota', 'Japan', 'J', 'S', '12345678', 1, NULL, NULL, NULL),
-(2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0, NULL, NULL, NULL);
+(2, 'Mitsubishi', 'Japan', 'R', 'F', '12345678', 0, NULL, NULL, NULL),
+(3, 'Ford', 'America', '4', 'M', '65432198', 1, NULL, NULL, NULL),
+(4, 'Porcshe', 'Germany', 'Y', 'I', '65432198', 0, NULL, NULL, NULL),
+(5, 'Porcshe', 'Germany', 'Y', 'S', '65432198', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -143,7 +152,10 @@ CREATE TABLE `recalls` (
 INSERT INTO `recalls` (`idx`, `idx_car_manufacturer`, `cause`) VALUES
 (1, 1, 'infotaiment system'),
 (2, 1, 'hybrid system'),
-(3, 2, 'new stuff added (engine)');
+(3, 2, 'new stuff added (engine)'),
+(4, 2, 'new steering wheel'),
+(5, 2, 'faulty tire'),
+(6, 2, 'some problems');
 
 -- --------------------------------------------------------
 
@@ -349,7 +361,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `car_manufacturer`
 --
 ALTER TABLE `car_manufacturer`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `damages`
@@ -361,13 +373,13 @@ ALTER TABLE `damages`
 -- AUTO_INCREMENT for table `manufacturers`
 --
 ALTER TABLE `manufacturers`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `recalls`
 --
 ALTER TABLE `recalls`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `reporter`

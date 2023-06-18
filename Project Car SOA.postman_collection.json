@@ -10,56 +10,412 @@
 			"name": "manufacturer",
 			"item": [
 				{
-					"name": "register manufacturer",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Mitsubishi",
-									"type": "text"
+					"name": "Login Manufacturer",
+					"item": [
+						{
+							"name": "login manufacturer (code 200)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
 								},
+								"url": {
+									"raw": "localhost:3000/manufacturer/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"manufacturer",
+										"login"
+									]
+								}
+							},
+							"response": [
 								{
-									"key": "country_origin",
-									"value": "Japan",
-									"type": "text"
-								},
-								{
-									"key": "region_id",
-									"value": "R",
-									"type": "text"
-								},
-								{
-									"key": "plant_code",
-									"value": "F",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "12345678",
-									"type": "text"
+									"name": "login manufacturer (code 200)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "ford",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "65432198",
+													"type": "text"
+												},
+												{
+													"key": "plant_code",
+													"value": "M",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "210"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d2-liuBza8xDfY6tqmqyifq2dYM1/I\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:32:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Login Successful\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8\"\n}"
 								}
 							]
 						},
-						"url": {
-							"raw": "localhost:3000/manufacturer/register",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"manufacturer",
-								"register"
+						{
+							"name": "login manufacturer (code 400)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/manufacturer/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"manufacturer",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "login manufacturer (code 400)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Toyota",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "1234567k",
+													"type": "text"
+												},
+												{
+													"key": "plant_code",
+													"value": "H",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "49"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"31-0VhJLQ0HJ+cIiRl1HzOTpj8RKDc\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:33:33 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"name/password/plant_code is invalid\"\n}"
+								}
 							]
 						}
-					},
-					"response": [
+					],
+					"description": "user manufacturer login will need username, password and plant code"
+				},
+				{
+					"name": "Register Manufacturer",
+					"item": [
 						{
-							"name": "example insert",
-							"originalRequest": {
+							"name": "register manufacturer (code 201)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"name\",\"country_origin\",\"region_id\",\"plant_code\",\"password\",\"authorized\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Porcshe",
+											"type": "text"
+										},
+										{
+											"key": "country_origin",
+											"value": "Germany",
+											"type": "text"
+										},
+										{
+											"key": "region_id",
+											"value": "Y",
+											"type": "text"
+										},
+										{
+											"key": "plant_code",
+											"value": "I",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "65432198",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/manufacturer/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"manufacturer",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "register manufacturer (code 201)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Porcshe",
+													"type": "text"
+												},
+												{
+													"key": "country_origin",
+													"value": "Germany",
+													"type": "text"
+												},
+												{
+													"key": "region_id",
+													"value": "Y",
+													"type": "text"
+												},
+												{
+													"key": "plant_code",
+													"value": "I",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "65432198",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"register"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "127"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"7f-ZaAk+LiT6pw5jhcntgyXFq7ZF70\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 23:51:06 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"name\": \"Ford\",\n    \"country_origin\": \"America\",\n    \"region_id\": \"4\",\n    \"plant_code\": \"M\",\n    \"password\": \"65432198\",\n    \"authorized\": \"not authorized\"\n}"
+								}
+							]
+						},
+						{
+							"name": "register manufacturer (code 400)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(400);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -87,7 +443,7 @@
 										},
 										{
 											"key": "password",
-											"value": "12345678",
+											"value": "1234",
 											"type": "text"
 										}
 									]
@@ -104,127 +460,273 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
+									"name": "required field needed",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Mitsubishi",
+													"type": "text"
+												},
+												{
+													"key": "country_origin",
+													"value": "Japan",
+													"type": "text"
+												},
+												{
+													"key": "region_id",
+													"value": "R",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "plant_code",
+													"value": "F",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"register"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "23"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"17-ZNzo3k1F2eyl/2KVMbMRxMAKwmA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 23:53:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "\"region_id\" is required"
 								},
 								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
+									"name": "input invalid",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Mitsubishi",
+													"type": "text"
+												},
+												{
+													"key": "country_origin",
+													"value": "Japan",
+													"type": "text"
+												},
+												{
+													"key": "region_id",
+													"value": "R",
+													"type": "text"
+												},
+												{
+													"key": "plant_code",
+													"value": "F",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "1234",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"register"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "52"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"34-KF07CxgCxVsIcA477SunsurB02Y\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 23:54:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "\"password\" length must be at least 8 characters long"
 								},
 								{
-									"key": "Content-Length",
-									"value": "131"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"83-rk+oFZV5yxYeLdslbJ52I2LUnJE\""
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 02 Jun 2023 03:57:43 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"name": "same plant code",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Mitsubishi",
+													"type": "text"
+												},
+												{
+													"key": "country_origin",
+													"value": "Japan",
+													"type": "text"
+												},
+												{
+													"key": "region_id",
+													"value": "R",
+													"type": "text"
+												},
+												{
+													"key": "plant_code",
+													"value": "F",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12342345",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/manufacturer/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"manufacturer",
+												"register"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "58"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3a-bz7S57QVyQ9h70YcFziAKnVZgTc\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:38:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"manufacturer cannot have the same plant code\"\n}"
 								}
-							],
-							"cookie": [],
-							"body": "{\n    \"name\": \"Mitsubishi\",\n    \"country_origin\": \"Japan\",\n    \"region_id\": \"R\",\n    \"plant_code\": \"F\",\n    \"password\": \"12345678\",\n    \"authorized\": \"not authorized\"\n}"
+							]
 						}
-					]
+					],
+					"description": "user manufacturer can register will need to fill name, password country_origin, region_id, plant_code. when the user registers, the default authorization is false. Manufacturer must be authorized first by the admin after register."
 				},
 				{
-					"name": "login manufacturer",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Toyota",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "12345678",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/manufacturer/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"manufacturer",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add new car_manufacturer",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "model",
-									"value": "prius",
-									"type": "text"
-								},
-								{
-									"key": "manufacturer",
-									"value": "toyota",
-									"type": "text",
-									"disabled": true
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/car/manufacturer/new",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"car",
-								"manufacturer",
-								"new"
-							]
-						}
-					},
-					"response": [
+					"name": "Car Manufacturer",
+					"item": [
 						{
-							"name": "example add new car model",
-							"originalRequest": {
+							"name": "add model (code 201)",
+							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
 										"type": "text"
 									}
 								],
@@ -233,14 +735,13 @@
 									"urlencoded": [
 										{
 											"key": "model",
-											"value": "prius",
+											"value": "focus",
 											"type": "text"
 										},
 										{
 											"key": "manufacturer",
-											"value": "toyota",
-											"type": "text",
-											"disabled": true
+											"value": "ford",
+											"type": "text"
 										}
 									]
 								},
@@ -257,102 +758,246 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "115"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"73-CX1opwcGwCZdRByi8KbHg/pR1CA\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 03 Jun 2023 03:41:44 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"model\": \"prius\",\n    \"idx_manufacturer\": 1,\n    \"fuel_type\": \"gas\",\n    \"year\": 2001,\n    \"drive\": \"fwd\",\n    \"transmission\": \"a\",\n    \"cylinders\": 4\n}"
-						}
-					]
-				},
-				{
-					"name": "add new car from model (VIN)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODU3NjM2MzAsImV4cCI6MTY4NTc2NzIzMH0.7kftevdTWtfKBJOJpTH8ZZ12UsTUX2XXc8UMIM1Yc90",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "car_model",
-									"value": "supra",
-									"type": "text"
-								},
-								{
-									"key": "vehicle_code",
-									"value": "QA759",
-									"type": "text"
-								},
-								{
-									"key": "security_check_digit",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "quantity",
-									"value": "2",
-									"type": "text"
+									"name": "add model (code 201)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "model",
+													"value": "camry",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/car/manufacturer/new",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												"manufacturer",
+												"new"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "133"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"85-dwtTgbhe38UG7SD5g0fDcThDh3Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:16:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Added model to your lineup\",\n    \"model\": \"camry\",\n    \"fuel_type\": \"gas\",\n    \"year\": 1993,\n    \"drive\": \"fwd\",\n    \"transmission\": \"a\",\n    \"cylinders\": 4\n}"
 								}
 							]
 						},
-						"url": {
-							"raw": "localhost:3000/car/manufacturer/add",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"car",
-								"manufacturer",
-								"add"
-							]
-						}
-					},
-					"response": [
 						{
-							"name": "add new car from model (VIN)",
-							"originalRequest": {
+							"name": "add model (code 404)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDI0NzcsImV4cCI6MTY4NzAwNjA3N30.Zu3nnAIvkkI82j8m8pIWKxFW4B0b_IdmUMncWu0_W_E",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "model",
+											"value": "fasdlkfjasd",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/manufacturer/new",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"manufacturer",
+										"new"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "add model (code 404)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "model",
+													"value": "fasdlkfjasd",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/car/manufacturer/new",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												"manufacturer",
+												"new"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b-q99qmqGH+w5fVZTbHWo08w0QnoA\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:21:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"car not found\"\n}"
+								}
+							]
+						}
+					],
+					"description": "Manufacturer can add new models, by inputing the desired model name."
+				},
+				{
+					"name": "VIN Number by model",
+					"item": [
+						{
+							"name": "add new car from model (code 201)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\",\"cars\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
 										"type": "text"
 									}
 								],
@@ -361,22 +1006,22 @@
 									"urlencoded": [
 										{
 											"key": "car_model",
-											"value": "prius",
+											"value": "supra",
 											"type": "text"
 										},
 										{
 											"key": "vehicle_code",
-											"value": "QA759",
+											"value": "AGB32",
 											"type": "text"
 										},
 										{
 											"key": "security_check_digit",
-											"value": "5",
+											"value": "A",
 											"type": "text"
 										},
 										{
 											"key": "quantity",
-											"value": "2",
+											"value": "1",
 											"type": "text"
 										}
 									]
@@ -394,90 +1039,508 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "103"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"67-vzP4gFCwd6sbZACAGYA+HRGvFTw\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 11:52:50 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOQA75951S00002\"\n        },\n        {\n            \"vin\": \"JTOQA75951S00003\"\n        }\n    ]\n}"
-						}
-					]
-				},
-				{
-					"name": "add recall",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "car_model",
-									"value": "prius",
-									"type": "text"
-								},
-								{
-									"key": "cause",
-									"value": "infotaiment system",
-									"type": "text"
+									"name": "add new car from model (VIN)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDUzMTUsImV4cCI6MTY4NzA0ODkxNX0.l5RKu--00Hk-8VBV46AhhXh97C7bEKnIAf9I1EF5cbM",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "car_model",
+													"value": "supra",
+													"type": "text"
+												},
+												{
+													"key": "vehicle_code",
+													"value": "AGB32",
+													"type": "text"
+												},
+												{
+													"key": "security_check_digit",
+													"value": "A",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/car/manufacturer/add",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												"manufacturer",
+												"add"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "76"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4c-e3TSkYn95QiR+4H4vJLijSuEmgI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:27:42 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"insert car/cars successful\",\n    \"cars\": [\n        {\n            \"vin\": \"JTOAGB32ARS00004\"\n        }\n    ]\n}"
 								}
 							]
 						},
-						"url": {
-							"raw": "localhost:3000/recall",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"recall"
-							]
-						}
-					},
-					"response": [
 						{
-							"name": "recall",
-							"originalRequest": {
+							"name": "add new car from model (code 403)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(403);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "POST",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "car_model",
+											"value": "supra",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_code",
+											"value": "AGB32",
+											"type": "text"
+										},
+										{
+											"key": "security_check_digit",
+											"value": "A",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/manufacturer/add",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"manufacturer",
+										"add"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "different manufacturer",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "car_model",
+													"value": "supra",
+													"type": "text"
+												},
+												{
+													"key": "vehicle_code",
+													"value": "AGB32",
+													"type": "text"
+												},
+												{
+													"key": "security_check_digit",
+													"value": "A",
+													"type": "text"
+												},
+												{
+													"key": "quantity",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/car/manufacturer/add",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												"manufacturer",
+												"add"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "56"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"38-TaJnWF2LHVM5RCDxMF1tlqkBZpY\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:34:42 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"cannot add car from different manufacturer\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get car details (code 200)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDcyMzQsImV4cCI6MTY4NzAxMDgzNH0.USdh9scvSsJVtM8hvlflRFs5bRdfvPHvmuHzI5MsFiA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/car/?vin=JTOQA75951S00001",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										""
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA75951S00001"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get car details (code 200)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ5NzYwLCJleHAiOjE2ODcwNTMzNjB9.sYFoNsUznJ-b-wkgFEkzRplHdHrykRa-UGfxEOpn-lk",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/car/?vin=JTOQA75951S00001",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA75951S00001"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "166"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"a6-SENvEscgfT1LmjXgdlTewbtHp7E\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:57:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"vin\": \"JTOQA75951S00001\",\n    \"car_model\": {\n        \"model\": \"prius\",\n        \"year\": 2001,\n        \"drive\": \"fwd\",\n        \"fuel_type\": \"gas\",\n        \"transmission\": \"a\",\n        \"cylinders\": 4\n    },\n    \"manufacturer\": {\n        \"name\": \"toyota\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "get car details (code 404)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ5NzYwLCJleHAiOjE2ODcwNTMzNjB9.sYFoNsUznJ-b-wkgFEkzRplHdHrykRa-UGfxEOpn-lk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/car/?vin=JTOQA75951S000GH",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										""
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA75951S000GH"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "get car details (code 404)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ5NzYwLCJleHAiOjE2ODcwNTMzNjB9.sYFoNsUznJ-b-wkgFEkzRplHdHrykRa-UGfxEOpn-lk",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/car/?vin=JTOQA75951S000GH",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA75951S000GH"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "31"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1f-rr84cUooMekogClXwciVJldRGrg\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:59:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Car vin not found\"\n}"
+								}
+							]
+						}
+					],
+					"description": "Manufacturer can add new car lineups based on the models added previously by the user. user must input the model,vehicle code, security check digit and quantity for VIN number generation. note that manufacturer cannot add car models from diffrent manufacturer."
+				},
+				{
+					"name": "Recall",
+					"item": [
+						{
+							"name": "add recall (code 201)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\",\"model\",\"cause\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJ0b3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDg5NDIsImV4cCI6MTY4NzA1MjU0Mn0.Rd-6XjTSvlgFTpm-oXTXnAbjrY6_g4SZIi965OkFaZo",
 										"type": "text"
 									}
 								],
@@ -491,7 +1554,7 @@
 										},
 										{
 											"key": "cause",
-											"value": "new stuff added (engine)",
+											"value": "faulty tire",
 											"type": "text"
 										}
 									]
@@ -507,71 +1570,221 @@
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
+									"name": "add recall (code 201)",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJ0b3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwNDg5NDIsImV4cCI6MTY4NzA1MjU0Mn0.Rd-6XjTSvlgFTpm-oXTXnAbjrY6_g4SZIi965OkFaZo",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "car_model",
+													"value": "supra",
+													"type": "text"
+												},
+												{
+													"key": "cause",
+													"value": "some problems",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/recall",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"recall"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "70"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"46-MGMoID70IT4yTQSHELPw9QnoUSM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:47:13 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"car recall order\",\n    \"model\": \"supra\",\n    \"cause\": \"some problems\"\n}"
+								}
+							]
+						},
+						{
+							"name": "add recall (code 403)",
+							"event": [
 								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "81"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"51-9l6JPzWQaZzwJZgF76wNYAI4uyk\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 12:37:12 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(403);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"car recall order\",\n    \"model\": \"supra\",\n    \"cause\": \"new stuff added (engine)\"\n}"
-						}
-					]
-				},
-				{
-					"name": "get recall",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:3000/recall/",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"recall",
-								""
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "car_model",
+											"value": "supra",
+											"type": "text"
+										},
+										{
+											"key": "cause",
+											"value": "faulty tire",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/recall",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"recall"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "diffrent manufacturer",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "car_model",
+													"value": "supra",
+													"type": "text"
+												},
+												{
+													"key": "cause",
+													"value": "faulty tire",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/recall",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"recall"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "59"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3b-RSu2yidZpmFOm89ZaKPoZj3G6rw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:49:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"cannot recall car from different manufacturer\"\n}"
+								}
 							]
-						}
-					},
-					"response": [
+						},
 						{
-							"name": "get all recall",
-							"originalRequest": {
+							"name": "get recall (code 200)",
+							"request": {
 								"method": "GET",
 								"header": [
 									{
@@ -592,55 +1805,160 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
+									"name": "get all recall",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/recall/",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"recall",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "158"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"9e-lZbZPLQTAyX02V29jDpg01KzY2w\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 12:39:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"model\": \"prius\",\n        \"recalls\": [\n            {\n                \"causes\": \"infotaiment system\"\n            },\n            {\n                \"causes\": \"hybrid system\"\n            }\n        ]\n    },\n    {\n        \"model\": \"supra\",\n        \"recalls\": [\n            {\n                \"causes\": \"new stuff added (engine)\"\n            }\n        ]\n    }\n]"
 								},
 								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "158"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"9e-lZbZPLQTAyX02V29jDpg01KzY2w\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 12:39:00 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"name": "get single model recall",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/recall/?model=supra",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"recall",
+												""
+											],
+											"query": [
+												{
+													"key": "model",
+													"value": "supra"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "67"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"43-oMXQXPc+5IlxdAryBbFpF+Wktk0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 12:43:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"model\": \"supra\",\n    \"recalls\": [\n        {\n            \"causes\": \"new stuff added (engine)\"\n        }\n    ]\n}"
 								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"model\": \"prius\",\n        \"recalls\": [\n            {\n                \"causes\": \"infotaiment system\"\n            },\n            {\n                \"causes\": \"hybrid system\"\n            }\n        ]\n    },\n    {\n        \"model\": \"supra\",\n        \"recalls\": [\n            {\n                \"causes\": \"new stuff added (engine)\"\n            }\n        ]\n    }\n]"
+							]
 						},
 						{
-							"name": "get single model recall",
-							"originalRequest": {
+							"name": "get recall (code 404)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "localhost:3000/recall/?model=supra",
+									"raw": "localhost:3000/recall/?model=79879",
 									"host": [
 										"localhost"
 									],
@@ -652,50 +1970,84 @@
 									"query": [
 										{
 											"key": "model",
-											"value": "supra"
+											"value": "79879"
 										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
+							"response": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "67"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"43-oMXQXPc+5IlxdAryBbFpF+Wktk0\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 12:43:02 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
+									"name": "get recall (code 404)",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/recall/?model=79879",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"recall",
+												""
+											],
+											"query": [
+												{
+													"key": "model",
+													"value": "79879"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-YELePc8YlRc4/LzhEWrQTtEmpj8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 00:54:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Car model not found\"\n}"
 								}
-							],
-							"cookie": [],
-							"body": "{\n    \"model\": \"supra\",\n    \"recalls\": [\n        {\n            \"causes\": \"new stuff added (engine)\"\n        }\n    ]\n}"
+							]
 						}
-					]
+					],
+					"description": "Manufacturers can post recalls to the desired model. input the model and the cause of the recall."
 				}
-			]
+			],
+			"description": "All endpoints used for user type manufacturer. Manufacturer is the user that can add new model cars in the system and line up new vehicles based on their models."
 		},
 		{
 			"name": "Report + Reporter",
@@ -1660,37 +3012,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "get car details(vin)",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-auth-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDcyMzQsImV4cCI6MTY4NzAxMDgzNH0.USdh9scvSsJVtM8hvlflRFs5bRdfvPHvmuHzI5MsFiA",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "localhost:3000/car/?vin=JTOQA75951S00001",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"car",
-						""
-					],
-					"query": [
-						{
-							"key": "vin",
-							"value": "JTOQA75951S00001"
-						}
-					]
-				}
-			},
-			"response": []
 		}
 	]
 }
