@@ -19,7 +19,7 @@ Report.init(
             autoIncrement:true
         },
         vin:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull:false,
         },
         type:{
