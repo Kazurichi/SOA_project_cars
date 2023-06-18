@@ -162,7 +162,7 @@ router.get("/:id?",async(req,res)=>{
           attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
         });
 
-          if (!getreport) {
+          if (getreport.length==0) {
               return res.status(404).send("Report not found")
           }
           return res.status(200).send(getreport);
@@ -173,12 +173,16 @@ router.get("/:id?",async(req,res)=>{
         } 
     }
     else{
+      //user
      let id = check.idx;
       let getHit = await Subscription.findOne({
         where:{
             id_user:check.idx
         }
     });
+    if(!getHit){
+      return res.status(200).send("User Belum berlangganan!");
+    }
       let api_hit = getHit.content_access;
       if(api_hit==0){
         return res.status(200).send("Tidak bisa mendapatkan report karena sudah mencapai batas!");
@@ -189,7 +193,7 @@ router.get("/:id?",async(req,res)=>{
             where: { vin: idxcar },
             attributes: ['vin', 'type','title','location' ,'reporter_name','description','createdAt']
           });
-            if (!getreport) {
+            if (getreport.length==0) {
                 return res.status(404).send("Report not found")
             }
             let updateHit = await sequelize.query(
@@ -246,7 +250,7 @@ router.get("/damage/detail/:vin?",async(req,res)=>{
           attributes: ['vin', 'description','estimated']
         });
 
-          if (!getDamage) {
+          if (getDamage.length==0) {
               return res.status(404).send("Damage not found")
           }
           return res.status(200).send(getDamage);
@@ -257,12 +261,16 @@ router.get("/damage/detail/:vin?",async(req,res)=>{
         } 
     }
     else{
+      //user 
      let id = check.idx;
       let getHit = await Subscription.findOne({
         where:{
             id_user:check.idx
         }
     });
+    if(!getHit){
+      return res.status(200).send("User Belum berlangganan!");
+    }
       let api_hit = getHit.content_access;
       if(api_hit==0){
         return res.status(200).send("Tidak bisa mendapatkan detail damage karena sudah mencapai batas!");
@@ -273,7 +281,7 @@ router.get("/damage/detail/:vin?",async(req,res)=>{
             where: { vin: idxcar },
             attributes: ['vin', 'description','estimated']
           });
-            if (!getDamage) {
+            if (getDamage.length==0) {
                 return res.status(404).send("Damage not found")
             }
             let updateHit = await sequelize.query(
