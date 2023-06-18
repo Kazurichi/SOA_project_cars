@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 03:10 AM
+-- Generation Time: Jun 18, 2023 at 02:51 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -95,11 +95,19 @@ INSERT INTO `car_manufacturer` (`idx`, `model`, `idx_manufacturer`, `year`, `dri
 DROP TABLE IF EXISTS `damages`;
 CREATE TABLE `damages` (
   `idx` int(50) NOT NULL,
-  `car_idx` int(50) NOT NULL,
+  `vin` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `estimated` int(50) NOT NULL,
   `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `damages`
+--
+
+INSERT INTO `damages` (`idx`, `vin`, `description`, `estimated`, `picture`) VALUES
+(1, 'JTOQA7595RS00001', 'pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan', 9999, 'JTOQA7595RS00001_volkswagen-passat--front-left.jpg'),
+(2, 'JTOQA7595RS00001', 'pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan', 29000, 'JTOQA7595RS00001_volkswagen-passat--vin.jpg');
 
 -- --------------------------------------------------------
 
@@ -196,11 +204,12 @@ INSERT INTO `reporter` (`idx`, `name`, `username`, `password`, `company`, `autho
 DROP TABLE IF EXISTS `reports`;
 CREATE TABLE `reports` (
   `idx` int(11) NOT NULL,
-  `car_idx` int(11) NOT NULL,
+  `vin` varchar(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `reporter_id` int(11) NOT NULL,
+  `reporter_name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
@@ -211,8 +220,9 @@ CREATE TABLE `reports` (
 -- Dumping data for table `reports`
 --
 
-INSERT INTO `reports` (`idx`, `car_idx`, `type`, `title`, `location`, `reporter_id`, `description`, `createdAt`, `updatedAt`, `deleteAt`) VALUES
-(1, 6, 'Taxi', 'Taxi Mobil', 'Surabaya', 5, 'Mobil ini pernah digunakan sebagai taxi mobil', '2023-06-17 09:52:51', '2023-06-17 09:52:51', NULL);
+INSERT INTO `reports` (`idx`, `vin`, `type`, `title`, `location`, `reporter_id`, `reporter_name`, `description`, `createdAt`, `updatedAt`, `deleteAt`) VALUES
+(1, 'JTOQA7595RS00001', 'Taxi', 'Taxi Mobil', 'Surabaya', 1, 'Reporter1', 'Mobil ini pernah digunakan sebagai taxi mobil', '2023-06-17 14:34:35', '2023-06-17 14:34:35', NULL),
+(2, 'JTOQA7595RS00002', 'Taxi', 'Taxi Mobil', 'Jakarta', 2, 'Reporter2', 'Mobil ini pernah digunakan sebagai taxi mobil', '2023-06-17 14:34:36', '2023-06-17 14:34:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -367,7 +377,7 @@ ALTER TABLE `car_manufacturer`
 -- AUTO_INCREMENT for table `damages`
 --
 ALTER TABLE `damages`
-  MODIFY `idx` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idx` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -391,7 +401,7 @@ ALTER TABLE `reporter`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `subscriptions`

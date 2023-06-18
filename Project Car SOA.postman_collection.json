@@ -2177,970 +2177,6 @@
 			"description": "All endpoints used for user type manufacturer. Manufacturer is the user that can add new model cars in the system and line up new vehicles based on their models."
 		},
 		{
-			"name": "Report + Reporter",
-			"item": [
-				{
-					"name": "Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "username",
-									"value": "Malv123",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/reporter/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"reporter",
-								"login"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Login",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "username",
-											"value": "Malv123",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/reporter/login",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"reporter",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "255"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"ff-jXHyWAcd0oXQoW9bVTMGp4Hgxik\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:45:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"Message\": \"Reporter Malv123 berhasil login\",\n    \"Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Post Report",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDE4MSwiZXhwIjoxNjg2OTczNzgxfQ.E1lstywWOCOb6RqXNt6__TFp6xzCrvswKt-Y9Nvpho4",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "car_idx",
-									"value": "6",
-									"type": "text"
-								},
-								{
-									"key": "type",
-									"value": "Taxi",
-									"type": "text"
-								},
-								{
-									"key": "title",
-									"value": "Taxi Mobil",
-									"type": "text"
-								},
-								{
-									"key": "location",
-									"value": "Surabaya",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Mobil ini pernah digunakan sebagai taxi mobil",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/report",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"report"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Post Report",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDE4MSwiZXhwIjoxNjg2OTczNzgxfQ.E1lstywWOCOb6RqXNt6__TFp6xzCrvswKt-Y9Nvpho4",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "car_idx",
-											"value": "6",
-											"type": "text"
-										},
-										{
-											"key": "type",
-											"value": "Taxi",
-											"type": "text"
-										},
-										{
-											"key": "title",
-											"value": "Taxi Mobil",
-											"type": "text"
-										},
-										{
-											"key": "location",
-											"value": "Surabaya",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "Mobil ini pernah digunakan sebagai taxi mobil",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/report",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"report"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "210"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"d2-g2DFA+e1AcTDYWihRT8Tss7HcoM\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:52:51 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"Message\": \"Success Insert Report\",\n    \"Car_idx\": \"6\",\n    \"Type\": \"Taxi\",\n    \"Title\": \"Taxi Mobil\",\n    \"Location\": \"Surabaya\",\n    \"Description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n    \"Reporter_id\": 5,\n    \"Reporter_Name\": \"Malv123\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get Report",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "localhost:3000/report",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"report"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "4",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Single Report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:3000/report?id=4",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"report"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "4"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "190"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"be-9KS/t2tLii4hj3nC5TBfm8PSVKs\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:53:17 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"idx\": 4,\n        \"car_idx\": 4,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:16.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:16.000Z\"\n    }\n]"
-						},
-						{
-							"name": "All Report",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:3000/report",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"report"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "4",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "3167"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"c5f-f1KK1YEtTeq9O/mRiRBwC77+Gqs\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:53:46 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "[\n    {\n        \"idx\": 1,\n        \"car_idx\": 1,\n        \"type\": \"0\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:06:25.000Z\",\n        \"updatedAt\": \"2023-06-16T05:06:25.000Z\"\n    },\n    {\n        \"idx\": 2,\n        \"car_idx\": 2,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:08:09.000Z\",\n        \"updatedAt\": \"2023-06-16T05:08:09.000Z\"\n    },\n    {\n        \"idx\": 3,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:00.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:00.000Z\"\n    },\n    {\n        \"idx\": 4,\n        \"car_idx\": 4,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:16.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:16.000Z\"\n    },\n    {\n        \"idx\": 5,\n        \"car_idx\": 1,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:17.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:17.000Z\"\n    },\n    {\n        \"idx\": 6,\n        \"car_idx\": 2,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:18.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:18.000Z\"\n    },\n    {\n        \"idx\": 7,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T05:09:49.000Z\",\n        \"updatedAt\": \"2023-06-16T05:09:49.000Z\"\n    },\n    {\n        \"idx\": 8,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:32.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:32.000Z\"\n    },\n    {\n        \"idx\": 9,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:37.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:37.000Z\"\n    },\n    {\n        \"idx\": 10,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:38.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:38.000Z\"\n    },\n    {\n        \"idx\": 11,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:54.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:54.000Z\"\n    },\n    {\n        \"idx\": 12,\n        \"car_idx\": 3,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:50:59.000Z\",\n        \"updatedAt\": \"2023-06-16T08:50:59.000Z\"\n    },\n    {\n        \"idx\": 13,\n        \"car_idx\": 1,\n        \"type\": \"taxI\",\n        \"title\": \"title\",\n        \"location\": \"location\",\n        \"reporter_id\": 3,\n        \"description\": \"desc\",\n        \"createdAt\": \"2023-06-16T08:51:06.000Z\",\n        \"updatedAt\": \"2023-06-16T08:51:06.000Z\"\n    },\n    {\n        \"idx\": 14,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:51:39.000Z\",\n        \"updatedAt\": \"2023-06-17T02:51:39.000Z\"\n    },\n    {\n        \"idx\": 15,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:52:12.000Z\",\n        \"updatedAt\": \"2023-06-17T02:52:12.000Z\"\n    },\n    {\n        \"idx\": 16,\n        \"car_idx\": 6,\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_id\": 5,\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T02:52:51.000Z\",\n        \"updatedAt\": \"2023-06-17T02:52:51.000Z\"\n    }\n]"
-						},
-						{
-							"name": "User report (No Access)",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "localhost:3000/report",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"report"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "4",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "html",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "text/html; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "58"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"3a-pQK/JVSYhjRuGOAHUIH3B9+TeBQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:55:02 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "Tidak bisa mendapatkan report karena sudah mencapai batas!"
-						}
-					]
-				},
-				{
-					"name": "User Login",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "email@email.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/user/login",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"user",
-								"login"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "New Request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "email",
-											"value": "email@email.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/user/login",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"user",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "215"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"d7-j6aOzCcuPsqxQDqgg+GalmU6wgo\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:54:25 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Welcome John\",\n    \"API_KEY\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Post Damage",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDU3NywiZXhwIjoxNjg2OTc0MTc3fQ.VzjB5IeGSxy4Z4JVVVVUC9CXr4W7XxDS8Iex6bULukg",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "car_idx",
-									"value": "9",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
-									"type": "text"
-								},
-								{
-									"key": "estimated",
-									"value": "10000",
-									"type": "text"
-								},
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--wing-left.jpg"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/report/damage",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"report",
-								"damage"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Post Damage",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDU3NywiZXhwIjoxNjg2OTc0MTc3fQ.VzjB5IeGSxy4Z4JVVVVUC9CXr4W7XxDS8Iex6bULukg",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "car_idx",
-											"value": "9",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
-											"type": "text"
-										},
-										{
-											"key": "estimated",
-											"value": "10000",
-											"type": "text"
-										},
-										{
-											"key": "image",
-											"type": "file",
-											"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--wing-left.jpg"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/report/damage",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"report",
-										"damage"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "173"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"ad-ZvxfG/AVIiWqs1CSmW2iy5tUFHU\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:57:10 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"Message\": \"Suceess Insert Damage\",\n    \"car_idx\": \"9\",\n    \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n    \"image\": \"volkswagen-passat--wing-left.jpg\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Register",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Malv",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "Malv123",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "company",
-									"value": "Pt. Company",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/reporter/register",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"reporter",
-								"register"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Register",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "Malv",
-											"type": "text"
-										},
-										{
-											"key": "username",
-											"value": "Malv123",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123",
-											"type": "text"
-										},
-										{
-											"key": "company",
-											"value": "Pt. Company",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/reporter/register",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"reporter",
-										"register"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "105"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"69-j5iggtBkmsWWcf490vB1J1oXlk4\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 02:45:04 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"Reporter Registered Successfully\",\n    \"username\": \"Malv123\",\n    \"name\": \"Malv\",\n    \"company\": \"Pt. Company\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Add car plat number",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDIwMTgsImV4cCI6MTY4NzAwNTYxOH0.8BdyubvrhKqpRbwuM7hn0t6xWpyBKtEVVxtzHGQ8sbA",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "plat_number",
-									"value": "L123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/car/plat_number/:vin",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"car",
-								"plat_number",
-								":vin"
-							],
-							"variable": [
-								{
-									"key": "vin",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Add car plat number",
-							"originalRequest": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzAwMjI0OCwiZXhwIjoxNjg3MDA1ODQ4fQ._fYq-BPvZ5Wn_XAvFo1nDW0h9M8E6v97iul89FhdSZM",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "plat_number",
-											"value": "L123",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "localhost:3000/car/plat_number/:vin",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"car",
-										"plat_number",
-										":vin"
-									],
-									"variable": [
-										{
-											"key": "vin",
-											"value": "JTOQA75951S00001"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "54"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"36-LBJzqtSXVydEnT5h2DAjff3Yb4E\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 17 Jun 2023 11:46:19 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"plat number successfully changed to L123\"\n}"
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Login User",
 			"item": [
 				{
@@ -3971,6 +3007,2088 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Report + Reporter",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status c0de 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"//format response benar\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"Message\",\"Token\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "Malv123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"login"
+									]
+								},
+								"description": "Request ini digunakan untuk melakukan login reporter. Field yang diperlukan adalah username dan password\n\nContoh :\n\nUsername : Reporter1\n\nPassword : 123"
+							},
+							"response": [
+								{
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "username",
+													"value": "Malv123",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "123",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/reporter/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"reporter",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "255"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ff-jXHyWAcd0oXQoW9bVTMGp4Hgxik\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 02:45:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"Message\": \"Reporter Malv123 berhasil login\",\n    \"Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjAsImlhdCI6MTY4Njk2OTk0OSwiZXhwIjoxNjg2OTczNTQ5fQ.1fZbHn0Sb7ApaO8Q3CbEy3z-U4odyIp2nhBopXF8CoU\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Login Gagal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status c0de 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(400);\r",
+											"});\r",
+											"//format response benar\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "Malv123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "321",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login Gagal",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "username",
+													"value": "Malv123",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "321",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/reporter/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"reporter",
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "26"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1a-DXlGzHlpLM/bWkBqrD8GHj809N0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 02:50:08 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Login Gagal!\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status c0de 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"//format response benar\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res.message).equals(\"Reporter Registered Successfully\");\r",
+											"     pm.expect(res).have.keys([\"message\", \"username\", \"name\", \"company\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Malv",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Reporter7",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Kompas Gramedia",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"register"
+									]
+								},
+								"description": "Request ini digunakan untuk menambahkan reporter baru kedalam database.  \nfield yang digunakan :\n\n- name\n- username ( unique )\n- password\n- company"
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Malv",
+													"type": "text"
+												},
+												{
+													"key": "username",
+													"value": "Reporter5",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "123",
+													"type": "text"
+												},
+												{
+													"key": "company",
+													"value": "Kompas Gramedia",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/reporter/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"reporter",
+												"register"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "111"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"6f-yNQE7heWcgfaSubJpCgiI3k8WuU\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 02:52:27 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Reporter Registered Successfully\",\n    \"username\": \"Reporter5\",\n    \"name\": \"Malv\",\n    \"company\": \"Kompas Gramedia\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Register Gagal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status c0de 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(403);\r",
+											"});\r",
+											"pm.test(\"Error Username\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(\"Username harus unik! (username)\");\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Malv",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Malv123",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Pt. Company",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/reporter/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"reporter",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "name",
+													"value": "Malv",
+													"type": "text"
+												},
+												{
+													"key": "username",
+													"value": "Malv123",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "123",
+													"type": "text"
+												},
+												{
+													"key": "company",
+													"value": "Pt. Company",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/reporter/register",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"reporter",
+												"register"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "38"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"26-2dTBbPT1iNJp3UecTLiE0M1eQvI\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 02:51:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "Error: Username harus unik! (username)"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add Report",
+					"item": [
+						{
+							"name": "Post Report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"Message\", \"vin\", \"Type\", \"Title\", \"Location\",\"Description\",\"Reporter_Name\",\"Created_At\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA5MTg2OCwiZXhwIjoxNjg3MDk1NDY4fQ.-kHKsg2nj2mBGFhDnXZWw5SKnPwrJ1iiuqRwJgb4QSk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00002",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "Taxi",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Taxi Mobil",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Surabaya",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									]
+								},
+								"description": "Request ini digunakan oleh reporter yang sudah mendapatkan akses dari admin untuk memposting report, field yang digunakan adalah :\n\n- vin\n- type ( taxi, theft, activity, km, usage )\n- title\n- location\n- description\n    \n\nrequest ini juga perlu token agar request dapat berjalan"
+							},
+							"response": [
+								{
+									"name": "Post Report",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4Njk3MDE4MSwiZXhwIjoxNjg2OTczNzgxfQ.E1lstywWOCOb6RqXNt6__TFp6xzCrvswKt-Y9Nvpho4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "car_idx",
+													"value": "6",
+													"type": "text"
+												},
+												{
+													"key": "type",
+													"value": "Taxi",
+													"type": "text"
+												},
+												{
+													"key": "title",
+													"value": "Taxi Mobil",
+													"type": "text"
+												},
+												{
+													"key": "location",
+													"value": "Surabaya",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/report",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "210"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d2-g2DFA+e1AcTDYWihRT8Tss7HcoM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 02:52:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"Message\": \"Success Insert Report\",\n    \"Car_idx\": \"6\",\n    \"Type\": \"Taxi\",\n    \"Title\": \"Taxi Mobil\",\n    \"Location\": \"Surabaya\",\n    \"Description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n    \"Reporter_id\": 5,\n    \"Reporter_Name\": \"Malv123\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Post Report Gagal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function () {\r",
+											"        pm.response.to.have.status(403);\r",
+											"    });\r",
+											"    "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1Njg1NiwiZXhwIjoxNjg3MDYwNDU2fQ.un1M1W2pMX9w-HeoY87IM5EUU9htCgpUZKkoC9HSHnU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00002",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "pemakaian",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Taxi Mobil",
+											"type": "text"
+										},
+										{
+											"key": "location",
+											"value": "Surabaya",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Post Report Gagal",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1Njg1NiwiZXhwIjoxNjg3MDYwNDU2fQ.un1M1W2pMX9w-HeoY87IM5EUU9htCgpUZKkoC9HSHnU",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "vin",
+													"value": "6",
+													"type": "text"
+												},
+												{
+													"key": "type",
+													"value": "pemakaian",
+													"type": "text"
+												},
+												{
+													"key": "title",
+													"value": "Taxi Mobil",
+													"type": "text"
+												},
+												{
+													"key": "location",
+													"value": "Surabaya",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Mobil ini pernah digunakan sebagai taxi mobil",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/report",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "73"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"49-FjoGEDGqww/UGWFI8j0mUbGUrKQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 02:55:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "ValidationError: \"type\" must be one of [taxi, theft, activity, km, usage]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add Damage",
+					"item": [
+						{
+							"name": "Post Damage",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA5MTg2OCwiZXhwIjoxNjg3MDk1NDY4fQ.-kHKsg2nj2mBGFhDnXZWw5SKnPwrJ1iiuqRwJgb4QSk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00002",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+											"type": "text"
+										},
+										{
+											"key": "estimated",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--wing-left.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report/damage",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"damage"
+									]
+								},
+								"description": "request ini digunakan untuk reporter memposting kerusakan mobil dan estimasi berapa harga yang dikenakan untuk memperbaiki kerusakan tersbeut  \nfield yang digunakan :\n\n- VIN\n- description\n- estimtaed\n- image ( gambar kerusakan mobil )"
+							},
+							"response": [
+								{
+									"name": "Post Damage",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1NzE5NSwiZXhwIjoxNjg3MDYwNzk1fQ.prjwW1v2bJoB4BqLJMNb3169Tzb95ZYEz0a9TVVWQy8",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00002",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+													"type": "text"
+												},
+												{
+													"key": "estimated",
+													"value": "10000",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": "/D:/College/Semester 6/SOA/Project/Cars/volkswagen-passat--front-right.jpg"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/report/damage",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "186"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"ba-cGhO1zbmPmSM3tI5CuzZlS2CmMw\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:00:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"Message\": \"Suceess Insert Damage\",\n    \"vin\": \"JTOQA7595RS00002\",\n    \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n    \"image\": \"volkswagen-passat--front-right.jpg\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Post Damage Gagal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1Njg1NiwiZXhwIjoxNjg3MDYwNDU2fQ.un1M1W2pMX9w-HeoY87IM5EUU9htCgpUZKkoC9HSHnU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00002",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+											"type": "text"
+										},
+										{
+											"key": "estimated",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/report/damage",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"damage"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Post Damage Gagal",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1Njg1NiwiZXhwIjoxNjg3MDYwNDU2fQ.un1M1W2pMX9w-HeoY87IM5EUU9htCgpUZKkoC9HSHnU",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00002",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan",
+													"type": "text"
+												},
+												{
+													"key": "estimated",
+													"value": "10000",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/report/damage",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "43"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2b-tjAkDBKyEPs4nb7sQcSUWnSWLb0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 02:59:05 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"storageErrors\": [],\n    \"msg\": \"wrong filetype\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Report",
+					"item": [
+						{
+							"name": "Get Report",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status code 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"//format response benar\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA5MTg2OCwiZXhwIjoxNjg3MDk1NDY4fQ.-kHKsg2nj2mBGFhDnXZWw5SKnPwrJ1iiuqRwJgb4QSk",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "localhost:3000/report?vin=JTOQA7595RS00001",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00001"
+										}
+									]
+								},
+								"description": "request ini digunakan untuk melihat hasil report yang ada. terdapat pilihan single / mutiple report dan jika user ingin mengakses report maka user perlu untuk berlangganan dan mendapat access_content yang nantinya digunakan untuk membatasi akses user dalam melihat report\n\nField yang digunakan hanyalah VIN yang didapat dari table cars."
+							},
+							"response": [
+								{
+									"name": "Get Report",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1OTQ1MCwiZXhwIjoxNjg3MDYzMDUwfQ.Aep5hH17b5wuOagn_fCFZLW9Q9DOjhJzaG5pLFFY2IY",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report?vin=JTOQA7595RS00001",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report"
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00001"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2970"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"b9a-UQ/glM//1DueWJ35ZTGlX86+3nE\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:41:38 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Surabaya\",\n        \"reporter_name\": \"Reporter1\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T07:34:35.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter3\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T07:37:45.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T07:50:34.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T07:55:29.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T07:55:30.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T13:58:15.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T13:58:42.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T13:58:54.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:00:01.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:06:25.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:06:31.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:06:36.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:33:36.000Z\"\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"type\": \"Taxi\",\n        \"title\": \"Taxi Mobil\",\n        \"location\": \"Jakarta\",\n        \"reporter_name\": \"Reporter2\",\n        \"description\": \"Mobil ini pernah digunakan sebagai taxi mobil\",\n        \"createdAt\": \"2023-06-17T14:35:02.000Z\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Get Report Gagal",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status code 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1OTQ1MCwiZXhwIjoxNjg3MDYzMDUwfQ.Aep5hH17b5wuOagn_fCFZLW9Q9DOjhJzaG5pLFFY2IY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "localhost:3000/report?vin=JTOQA7595RS00005",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report"
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00005"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Report Gagal",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1OTQ1MCwiZXhwIjoxNjg3MDYzMDUwfQ.Aep5hH17b5wuOagn_fCFZLW9Q9DOjhJzaG5pLFFY2IY",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report?vin=JTOQA7595RS00005",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report"
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00005"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "16"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"10-2r8RR4iFT/H4N/QIB62vxSaQuq0\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:43:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "Report not found"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Get Damage",
+					"item": [
+						{
+							"name": "Get Damage",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//status code 200\r",
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"//format response benar\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    //return 1 json object\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA5MTg2OCwiZXhwIjoxNjg3MDk1NDY4fQ.-kHKsg2nj2mBGFhDnXZWw5SKnPwrJ1iiuqRwJgb4QSk",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/report/damage/detail/?vin=JTOQA7595RS00001",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"damage",
+										"detail",
+										""
+									],
+									"query": [
+										{
+											"key": "vin",
+											"value": "JTOQA7595RS00001"
+										}
+									]
+								},
+								"description": "Request ini digunakan untuk melihat hasil damage mobil yang tercatat didalam database. Terdapat pilihan single / mutiple dan jika user ingin mengakses report maka user perlu untuk berlangganan dan mendapat access_content yang nantinya digunakan untuk membatasi akses user dalam melihat damage detail  \nField yang digunakan hanyalah VIN yang didapat dari table cars."
+							},
+							"response": [
+								{
+									"name": "User No Access",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwNTc1NjQsImV4cCI6MTY4NzA2MTE2NH0.iVQhUyS_maQhn91oG2xs4nd721mmSMWQ0rL0d4I5tj8",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report/damage/detail/?vin=JTOQA7595RS00002",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage",
+												"detail",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00002"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "24"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"18-UBKVhCW+b3W2El14sLYL3k2vG4Q\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:09:31 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "User Belum berlangganan!"
+								},
+								{
+									"name": "Api hit max",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwNTc3OTUsImV4cCI6MTY4NzA2MTM5NX0.gxjxfAosHyz2SozlbrDCTcB7QwmdA6mQLl8DsThqZcw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report/damage/detail/?vin=JTOQA7595RS00002",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage",
+												"detail",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00002"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "65"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"41-VU7mb5HtuIH0Kduo8n0UYHIc1II\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:10:01 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "Tidak bisa mendapatkan detail damage karena sudah mencapai batas!"
+								},
+								{
+									"name": "Detail Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1NzgyOCwiZXhwIjoxNjg3MDYxNDI4fQ.-o7kAGvmb1gAEEuMfa7knYxqv6QsAN3q5lvGCrTIWCw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report/damage/detail/",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage",
+												"detail",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00005",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "16"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"10-VS32PVNJZxeB3kRw8M34Et07QHM\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:10:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "Damage not found"
+								},
+								{
+									"name": "All Damage Detail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1NzgyOCwiZXhwIjoxNjg3MDYxNDI4fQ.-o7kAGvmb1gAEEuMfa7knYxqv6QsAN3q5lvGCrTIWCw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report/damage/detail/",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage",
+												"detail",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00005",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1114"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"45a-tWYqM37uCOOisqmT69e9Ayv0M+Y\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:11:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"9\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 10000\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 10000\n    },\n    {\n        \"vin\": \"JTOQA7595RS00002\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 10000\n    }\n]"
+								},
+								{
+									"name": "Damage By VIN",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA1NzgyOCwiZXhwIjoxNjg3MDYxNDI4fQ.-o7kAGvmb1gAEEuMfa7knYxqv6QsAN3q5lvGCrTIWCw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/report/damage/detail/?vin=JTOQA7595RS00001",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"report",
+												"damage",
+												"detail",
+												""
+											],
+											"query": [
+												{
+													"key": "vin",
+													"value": "JTOQA7595RS00001"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "251"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"fb-2ykxjvcKuoNWVswjCSZQ5Rzytw8\""
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 18 Jun 2023 03:12:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    },\n    {\n        \"vin\": \"JTOQA7595RS00001\",\n        \"description\": \"pernah terjadi kecelakaan dan mengalami kerusakan dibagian depan\",\n        \"estimated\": 9999\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User Login",
+					"item": [
+						{
+							"name": "User Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "email@email.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "email",
+													"value": "email@email.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "123",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "localhost:3000/user/login",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"user",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "215"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"d7-j6aOzCcuPsqxQDqgg+GalmU6wgo\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 17 Jun 2023 02:54:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Welcome John\",\n    \"API_KEY\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODY5NzA0NjUsImV4cCI6MTY4Njk3NDA2NX0.0JcCrjhnGMHhA78Bx5swHAH9biU9F9G_V7-YWCFuXCQ\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Add car plat number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is correct\", function(){\r",
+									"    pm.expect(pm.response.code).equals(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is correct\", function(){\r",
+									"    //return 1 json object\r",
+									"    let res = null\r",
+									"    try{\r",
+									"        res = pm.response.json();\r",
+									"    }\r",
+									"    catch(e){\r",
+									"        pm.expect.fail(\"Response is not a json string\");\r",
+									"    }\r",
+									"    pm.expect(res).have.keys([\"message\"]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzA5MTg2OCwiZXhwIjoxNjg3MDk1NDY4fQ.-kHKsg2nj2mBGFhDnXZWw5SKnPwrJ1iiuqRwJgb4QSk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "plat_number",
+									"value": "L1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/car/plat_number/:vin",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"car",
+								"plat_number",
+								":vin"
+							],
+							"variable": [
+								{
+									"key": "vin",
+									"value": "JTOAGB32ARS00004"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add car plat number",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjUsInVzZXJuYW1lIjoiTWFsdjEyMyIsInJvbGUiOjIsImF1dGhvcml6ZWQiOjEsImlhdCI6MTY4NzAwMjI0OCwiZXhwIjoxNjg3MDA1ODQ4fQ._fYq-BPvZ5Wn_XAvFo1nDW0h9M8E6v97iul89FhdSZM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "plat_number",
+											"value": "L123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/car/plat_number/:vin",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										"plat_number",
+										":vin"
+									],
+									"variable": [
+										{
+											"key": "vin",
+											"value": "JTOQA75951S00001"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-LBJzqtSXVydEnT5h2DAjff3Yb4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 17 Jun 2023 11:46:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"plat number successfully changed to L123\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "x-auth-token",
+			"value": ""
 		}
 	]
 }
