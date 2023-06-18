@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "761b455e-56b1-4c91-99ec-c636418d557c",
+		"_postman_id": "c6b5dc8f-759c-47b6-bdf4-a6a010ae1eca",
 		"name": "Project Car SOA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "25933446"
+		"_exporter_id": "26946801"
 	},
 	"item": [
 		{
@@ -14,6 +14,29 @@
 					"item": [
 						{
 							"name": "login manufacturer (code 200)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\",\"token\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -22,12 +45,17 @@
 									"urlencoded": [
 										{
 											"key": "name",
-											"value": "Toyota",
+											"value": "ford",
 											"type": "text"
 										},
 										{
 											"key": "password",
-											"value": "12345678",
+											"value": "65432198",
+											"type": "text"
+										},
+										{
+											"key": "plant_code",
+											"value": "M",
 											"type": "text"
 										}
 									]
@@ -122,6 +150,29 @@
 						},
 						{
 							"name": "login manufacturer (code 400)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(400);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -135,7 +186,12 @@
 										},
 										{
 											"key": "password",
-											"value": "12345678",
+											"value": "1234567k",
+											"type": "text"
+										},
+										{
+											"key": "plant_code",
+											"value": "H",
 											"type": "text"
 										}
 									]
@@ -443,7 +499,7 @@
 										},
 										{
 											"key": "password",
-											"value": "1234",
+											"value": "12342345",
 											"type": "text"
 										}
 									]
@@ -721,6 +777,29 @@
 					"item": [
 						{
 							"name": "add model (code 201)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"message\",\"model\",\"fuel_type\",\"year\",\"drive\",\"transmission\",\"cylinders\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -735,12 +814,7 @@
 									"urlencoded": [
 										{
 											"key": "model",
-											"value": "focus",
-											"type": "text"
-										},
-										{
-											"key": "manufacturer",
-											"value": "ford",
+											"value": "camry",
 											"type": "text"
 										}
 									]
@@ -1289,12 +1363,35 @@
 						},
 						{
 							"name": "get car details (code 200)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"pm.test(\"Response is correct\", function(){\r",
+											"    let res = null\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }\r",
+											"    catch(e){\r",
+											"        pm.expect.fail(\"Response is not a json string\");\r",
+											"    }\r",
+											"    pm.expect(res).have.keys([\"vin\",\"car_model\",\"manufacturer\"]);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwMDcyMzQsImV4cCI6MTY4NzAxMDgzNH0.USdh9scvSsJVtM8hvlflRFs5bRdfvPHvmuHzI5MsFiA",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ5NzYwLCJleHAiOjE2ODcwNTMzNjB9.sYFoNsUznJ-b-wkgFEkzRplHdHrykRa-UGfxEOpn-lk",
 										"type": "text"
 									}
 								],
@@ -1517,6 +1614,15 @@
 									"listen": "prerequest",
 									"script": {
 										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
 											"pm.test(\"Status code is correct\", function(){\r",
 											"    pm.expect(pm.response.code).equals(201);\r",
 											"});\r",
@@ -1554,7 +1660,7 @@
 										},
 										{
 											"key": "cause",
-											"value": "faulty tire",
+											"value": "some problems",
 											"type": "text"
 										}
 									]
@@ -1784,12 +1890,26 @@
 						},
 						{
 							"name": "get recall (code 200)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is correct\", function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "GET",
 								"header": [
 									{
 										"key": "x-auth-token",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJUb3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcwMDM3ODMsImV4cCI6MTY4NzAwNzM4M30.--cuDSPcg-gUqMFm8mwsleTePILSjDxbGifeWAbfwtw",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjMsIm5hbWUiOiJmb3JkIiwicm9sZSI6MywiaWF0IjoxNjg3MDQ4MzQ3LCJleHAiOjE2ODcwNTE5NDd9.MLRzb5G10I3XUje29BhynxmOcl1QxcT6rZavnWnWWa8",
 										"type": "text"
 									}
 								],
@@ -1802,6 +1922,13 @@
 									"path": [
 										"recall",
 										""
+									],
+									"query": [
+										{
+											"key": "model",
+											"value": "supra",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -3014,141 +3141,6 @@
 			]
 		},
 		{
-			"name": "Register User",
-			"item": [
-				{
-					"name": "Register User Success",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"\r",
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Returning object with email, username, name\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.email).equals(pm.request.email);\r",
-									"    pm.expect(res.name).equals(pm.request.name);\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "{{$randomFirstName}}@email.com",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "{{$randomUserName}}",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "{{$randomFirstName}} {{$randomLastName}}",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/user/register",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"user",
-								"register"
-							]
-						},
-						"description": "Request ini digunakan untuk menambahkan pengguna baru kedalam database dengan meminta email, username, password, dan nama pengguna."
-					},
-					"response": []
-				},
-				{
-					"name": "Register User Failed",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(403);\r",
-									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/user/register",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"user",
-								"register"
-							]
-						},
-						"description": "Request ini digunakan untuk menambahkan pengguna baru kedalam database dengan meminta email, username, password, dan nama pengguna."
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Login User",
 			"item": [
 				{
@@ -3311,566 +3303,674 @@
 			]
 		},
 		{
-			"name": "Get Tier Subscription",
+			"name": "Admin",
 			"item": [
 				{
-					"name": "Get Tiers",
-					"event": [
+					"name": "Authorization Manufacturer",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.tiers);\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/user/tiers/",
-							"host": [
-								"localhost"
+							"name": "Give Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).contains(\"Given Authorization\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"user",
-								"tiers",
-								""
-							]
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/authorization/manufacturer/{{idManufacturer}}",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"authorization",
+										"manufacturer",
+										"{{idManufacturer}}"
+									]
+								},
+								"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
+							},
+							"response": []
 						},
-						"description": "Request ini digunakan untuk mendapatkan semua jenis subscription yang telah disediakan admin."
-					},
-					"response": []
+						{
+							"name": "Give Authorization Not Found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).contains(\"Not Found\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/authorization/manufacturer/az",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"authorization",
+										"manufacturer",
+										"az"
+									]
+								},
+								"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Get Tiers Failed",
-					"event": [
+					"name": "Authorization Reporter",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(404);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).equals(\"No tier found\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/user/tiers/a",
-							"host": [
-								"localhost"
+							"name": "Give Authorization",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).contains(\"Given Authorization\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"user",
-								"tiers",
-								"a"
-							]
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/authorization/reporter/{{idReporter}}",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"authorization",
+										"reporter",
+										"{{idReporter}}"
+									]
+								},
+								"description": "Endpoint ini memberikan otorisasi kepada reporter yang sudah terdaftar."
+							},
+							"response": []
 						},
-						"description": "Request ini digunakan untuk mendapatkan semua jenis subscription yang telah disediakan admin."
-					},
-					"response": []
+						{
+							"name": "Give Authorization Not Found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).contains(\"Not Found\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/authorization/reporter/az",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"authorization",
+										"reporter",
+										"az"
+									]
+								},
+								"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
 		{
-			"name": "User Subscription",
+			"name": "User Customer",
 			"item": [
 				{
-					"name": "Do Subscription",
-					"event": [
+					"name": "User Subscription",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.tier);\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "{{x-auth-token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
+							"name": "Do Subscription",
+							"event": [
 								{
-									"key": "tier",
-									"value": "1",
-									"type": "text"
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.tier);\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/user/subscription",
-							"host": [
-								"localhost"
 							],
-							"port": "3000",
-							"path": [
-								"user",
-								"subscription"
-							]
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{x-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "tier",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/subscription",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"subscription"
+									]
+								},
+								"description": "Request yang dijalankan untuk menambahkan jumlah akses yang diberikan pada user."
+							},
+							"response": []
 						},
-						"description": "Request yang dijalankan untuk menambahkan jumlah akses yang diberikan pada user."
-					},
-					"response": []
+						{
+							"name": "Do Subscription Failed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).equals(\"Token Expired\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{x-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "tier",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/subscription",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"subscription"
+									]
+								},
+								"description": "Request yang dijalankan untuk menambahkan jumlah akses yang diberikan pada user."
+							},
+							"response": []
+						}
+					]
 				},
-				{
-					"name": "Do Subscription Failed",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(400);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).equals(\"Token Expired\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "{{x-auth-token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "tier",
-									"value": "1",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:3000/user/subscription",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"user",
-								"subscription"
-							]
-						},
-						"description": "Request yang dijalankan untuk menambahkan jumlah akses yang diberikan pada user."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Get User Profile",
-			"item": [
 				{
 					"name": "Get User Profile",
-					"event": [
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).equals(\"Profile\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "{{x-auth-token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:3000/user/profile",
-							"host": [
-								"localhost"
+							"name": "Get User Profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).equals(\"Profile\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"user",
-								"profile"
-							]
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{x-auth-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/user/profile",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"profile"
+									]
+								},
+								"description": "Request digunakan untuk mendapatkan data dari pengguna, seperti username, nama, email, sisa berapa akses konten yang tersisa, subcribe pada tier apa."
+							},
+							"response": []
 						},
-						"description": "Request digunakan untuk mendapatkan data dari pengguna, seperti username, nama, email, sisa berapa akses konten yang tersisa, subcribe pada tier apa."
-					},
-					"response": []
+						{
+							"name": "Get User Profile Not Found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(400);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).equals(\"Token Expired\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "{{x-auth-token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/user/profile",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"profile"
+									]
+								},
+								"description": "Request digunakan untuk mendapatkan data dari pengguna, seperti username, nama, email, sisa berapa akses konten yang tersisa, subcribe pada tier apa."
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Get User Profile Not Found",
-					"event": [
+					"name": "Get Tier Subscription",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(400);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).equals(\"Token Expired\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "x-auth-token",
-								"value": "{{x-auth-token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "localhost:3000/user/profile",
-							"host": [
-								"localhost"
+							"name": "Get Tiers",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.tiers);\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"user",
-								"profile"
-							]
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/user/tiers/",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"tiers",
+										""
+									]
+								},
+								"description": "Request ini digunakan untuk mendapatkan semua jenis subscription yang telah disediakan admin."
+							},
+							"response": []
 						},
-						"description": "Request digunakan untuk mendapatkan data dari pengguna, seperti username, nama, email, sisa berapa akses konten yang tersisa, subcribe pada tier apa."
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Authorization Reporter",
-			"item": [
-				{
-					"name": "Give Authorization",
-					"event": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).contains(\"Given Authorization\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/authorization/reporter/{{idReporter}}",
-							"host": [
-								"localhost"
+							"name": "Get Tiers Failed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(404);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Returning object with subscription tier data\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.message).equals(\"No tier found\");\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"authorization",
-								"reporter",
-								"{{idReporter}}"
-							]
-						},
-						"description": "Endpoint ini memberikan otorisasi kepada reporter yang sudah terdaftar."
-					},
-					"response": []
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/user/tiers/a",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"tiers",
+										"a"
+									]
+								},
+								"description": "Request ini digunakan untuk mendapatkan semua jenis subscription yang telah disediakan admin."
+							},
+							"response": []
+						}
+					]
 				},
 				{
-					"name": "Give Authorization Not Found",
-					"event": [
+					"name": "Register User",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(404);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).contains(\"Not Found\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/authorization/reporter/az",
-							"host": [
-								"localhost"
+							"name": "Register User Success",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Returning object with email, username, name\",function(){\r",
+											"    let res = null;\r",
+											"    try{\r",
+											"        res = pm.response.json();\r",
+											"    }catch(e){\r",
+											"        pm.expect.fail(\"Response not JSON\");\r",
+											"    }\r",
+											"\r",
+											"    pm.expect(res.email).equals(pm.request.email);\r",
+											"    pm.expect(res.name).equals(pm.request.name);\r",
+											"}); "
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"port": "3000",
-							"path": [
-								"authorization",
-								"reporter",
-								"az"
-							]
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "{{$randomFirstName}}@email.com",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "{{$randomUserName}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "{{$randomFirstName}} {{$randomLastName}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"register"
+									]
+								},
+								"description": "Request ini digunakan untuk menambahkan pengguna baru kedalam database dengan meminta email, username, password, dan nama pengguna."
+							},
+							"response": []
 						},
-						"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
-					},
-					"response": []
+						{
+							"name": "Register User Failed",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status Code Correct\",function(){\r",
+											"    pm.expect(pm.response.code).equals(403);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"register"
+									]
+								},
+								"description": "Request ini digunakan untuk menambahkan pengguna baru kedalam database dengan meminta email, username, password, dan nama pengguna."
+							},
+							"response": []
+						}
+					]
 				}
 			]
-		},
-		{
-			"name": "Authorization Manufacturer",
-			"item": [
-				{
-					"name": "Give Authorization",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(200);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).contains(\"Given Authorization\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/authorization/manufacturer/{{idManufacturer}}",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"authorization",
-								"manufacturer",
-								"{{idManufacturer}}"
-							]
-						},
-						"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
-					},
-					"response": []
-				},
-				{
-					"name": "Give Authorization Not Found",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status Code Correct\",function(){\r",
-									"    pm.expect(pm.response.code).equals(404);\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Returning object with subscription tier data\",function(){\r",
-									"    let res = null;\r",
-									"    try{\r",
-									"        res = pm.response.json();\r",
-									"    }catch(e){\r",
-									"        pm.expect.fail(\"Response not JSON\");\r",
-									"    }\r",
-									"\r",
-									"    pm.expect(res.message).contains(\"Not Found\");\r",
-									"}); "
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/authorization/manufacturer/az",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"authorization",
-								"manufacturer",
-								"az"
-							]
-						},
-						"description": "Endpoint ini memberikan otorisasi kepada manufacturer yang sudah terdaftar."
-					},
-					"response": []
-				}
-			]
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "idReporter",
-			"value": "1",
-			"type": "string"
-		},
-		{
-			"key": "idManufacturer",
-			"value": "1",
-			"type": "string"
-		},
-		{
-			"key": "x-auth-token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsInVzZXJuYW1lIjoiVXNlcjEiLCJyb2xlIjoxLCJpYXQiOjE2ODcwODI0NDUsImV4cCI6MTY4NzA4NjA0NX0.ozN8yEUAZpJq8DlyRKu9L0ay44NC7HQiJlTBetklTAc",
-			"type": "string"
 		}
 	]
 }
