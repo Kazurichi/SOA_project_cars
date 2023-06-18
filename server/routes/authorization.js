@@ -5,7 +5,7 @@ const router = express.Router()
 
 //authorize reporter
 //Felix
-router.put("/reporter",async(req,res)=>{
+router.put("/reporter/:id",async(req,res)=>{
     let {id} = req.params;
     let reporter = await Reporter.findOne({
         where:{
@@ -43,7 +43,7 @@ router.put("/reporter",async(req,res)=>{
 });
 //authorize manufacter
 //Felix
-router.put("/manufacturer",async(req,res)=>{
+router.put("/manufacturer/:id",async(req,res)=>{
     let {id} = req.params;
     let manufacter = await Manufacturer.findOne({
         where:{
