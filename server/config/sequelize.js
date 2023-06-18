@@ -1,10 +1,11 @@
 const Sequelize = require("sequelize");
+require("dotenv").config();
 const db = new Sequelize(
-  'soa_project_cars', // DB_NAME
-  'root', // DB_USER
-  '', // DB_PASSWORD
+  process.env.DATABASE, // DB_NAME
+  process.env.USER, // DB_USER
+  process.env.PASSWORD, // DB_PASSWORD
   {
-    host: '127.0.0.1',
+    host: 'sql.freedb.tech',
     port: 3306,
     dialect: "mysql",
     logging: console.log,
