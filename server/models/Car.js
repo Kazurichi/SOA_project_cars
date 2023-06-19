@@ -32,6 +32,7 @@ Car.init(
         timestamps: false,
         modelName: "Car",
         tableName: "cars",
+        deletedAt:true
     }
 );
 

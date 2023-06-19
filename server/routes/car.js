@@ -15,7 +15,8 @@ const { getDB } = require("../config/sequelize");
 const sequelize = getDB();
 const {QueryTypes} = require('sequelize');
 
-router.get("/:vin?",async(req,res)=>{
+
+router.get("/:vin",async(req,res)=>{
     let vin= req.query.vin
     let token = req.header('x-auth-token')
     if(!req.header('x-auth-token')){
@@ -311,6 +312,52 @@ router.put("/plat_number/:vin",async(req,res)=>{
         })
         return res.status(200).send({"message":`plat number successfully changed to ${plat_number}`});
     }
+})
+
+router.delete("/:vin",async(req,res)=>{
+    let inputs={...req.params};
+    let id_manufacturer="";
+    let token = req.header('x-auth-token')
+    if(!req.header('x-auth-token')){
+        return res.status(403).send({"messsage":'Authentication Required'})
+    }
+    try {
+        let userdata = jwt.verify(token, JWT_KEY)
+        if (userdata.role!=3) {
+            return res.status(403).send({"messasge":"Unauthorized Access"});
+        }
+        id_manufacturer=userdata.idx;
+    } catch (error) {
+        return res.status(403).send({"message":'Invalid JWT Key'})
+    }
+    let manufacturer_data=await Manufacturer.findByPk(id_manufacturer);
+    if (manufacturer_data.authorized==0) {
+        return res.status(403).send("Cannot post request,this user needs admin's approval.");
+    }
+
+    let car_data=await Car.findOne({where:{
+        vin:inputs.vin
+    }});
+    if (!car_data) {
+        return res.status(404).send({"message":"car not found"});
+    }
+
+    let check_car_model=await Car_manufacturer.findOne({
+        where:{
+            idx:car_data.idx_car_manufacturer,
+            idx_manufacturer:id_manufacturer
+        }
+    });
+    if (!check_car_model) {
+        return res.status(403).send({"message":"cannot add car from different manufacturer"})
+    }
+    await Car.destroy({
+        where:{
+            vin:inputs.vin
+        }
+    })
+
+    return res.status(200).send({"message":`Car with VIN number ${inputs.vin} successfully deleted`});
 })
 
 module.exports = router

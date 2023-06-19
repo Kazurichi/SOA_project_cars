@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 03:02 PM
+-- Generation Time: Jun 19, 2023 at 05:25 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `cars`;
 CREATE TABLE `cars` (
   `vin` varchar(255) NOT NULL,
   `idx_car_manufacturer` int(11) NOT NULL,
-  `plat_number` varchar(255) NOT NULL,
+  `plat_number` varchar(255) DEFAULT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
   `deletedAt` datetime DEFAULT NULL

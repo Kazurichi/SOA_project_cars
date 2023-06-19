@@ -2172,6 +2172,206 @@
 						}
 					],
 					"description": "Manufacturers can post recalls to the desired model. input the model and the cause of the recall."
+				},
+				{
+					"name": "Delete car",
+					"item": [
+						{
+							"name": "delete car (code 404)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-auth-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJ0b3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcxNDYyMzIsImV4cCI6MTY4NzE0OTgzMn0.aNeyOf4BaVc4xA65oSYiBiK4oQG1BDFjI4eOsktstP4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/car/:vin",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										":vin"
+									],
+									"variable": [
+										{
+											"key": "vin",
+											"value": "87987987"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete car (code 404)",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJ0b3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcxNDYyMzIsImV4cCI6MTY4NzE0OTgzMn0.aNeyOf4BaVc4xA65oSYiBiK4oQG1BDFjI4eOsktstP4",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/car/:vin",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												":vin"
+											],
+											"variable": [
+												{
+													"key": "vin",
+													"value": "87987987"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b-q99qmqGH+w5fVZTbHWo08w0QnoA\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Jun 2023 03:45:02 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"car not found\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete car (code 200)",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/car/",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"car",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete car (code 404) Copy",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "x-auth-token",
+												"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjEsIm5hbWUiOiJ0b3lvdGEiLCJyb2xlIjozLCJpYXQiOjE2ODcxNDYyMzIsImV4cCI6MTY4NzE0OTgzMn0.aNeyOf4BaVc4xA65oSYiBiK4oQG1BDFjI4eOsktstP4",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "localhost:3000/car/:vin",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"car",
+												":vin"
+											],
+											"variable": [
+												{
+													"key": "vin",
+													"value": "JTOAGB32ARS00004"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "71"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"47-HbzjzsbsYqNjABC1bKgO7tX0FPA\""
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 19 Jun 2023 03:46:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Car with VIN number JTOAGB32ARS00004 successfully deleted\"\n}"
+								}
+							]
+						}
+					]
 				}
 			],
 			"description": "All endpoints used for user type manufacturer. Manufacturer is the user that can add new model cars in the system and line up new vehicles based on their models."

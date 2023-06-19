@@ -45,13 +45,14 @@ router.post("/register",async(req,res)=>{
         password:inputs.password,
         authorized:"not authorized"
     };
+
     return res.status(201).send(display)
 });
 
 router.post("/login",async(req,res)=>{
     let inputs={...req.body}
     
-    if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null||inputs.plant_code==null||inputs.plant_code==null) {
+    if (inputs.password==''||inputs.name==''||inputs.password==null||inputs.name==null||inputs.plant_code==""||inputs.plant_code==null) {
         return res.status(400).send({"message":"must fill name/password"});
     }
     let find_manufacturer=await Manufacturer.findOne({
