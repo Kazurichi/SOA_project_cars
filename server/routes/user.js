@@ -164,7 +164,7 @@ router.post("/subscription",async(req,res)=>{
             let {tier} = req.body;
     
             const schema = Joi.object({
-                tier:Joi.string().required(),
+                tier:Joi.number().required(),
             });
     
             try {
@@ -186,34 +186,40 @@ router.post("/subscription",async(req,res)=>{
             });
     
             let amount;
-    
-            if(subscription){
-                amount = subscription.content_access + getTier.content_access;
-    
-                let updateSubscribe = await Subscription.update({
-                    content_access: amount
-                },{
-                    where:{
-                        id_user:userdata.idx
-                    }
+            if(getTier){
+                if(subscription){
+                    amount = subscription.content_access + getTier.content_access;
+        
+                    let updateSubscribe = await Subscription.update({
+                        content_access: amount
+                    },{
+                        where:{
+                            id_user:userdata.idx
+                        }
+                    });
+                    
+                }
+                else{
+                    amount =  getTier.content_access;
+        
+                    let insertSubscribe = await Subscription.create({
+                        id_user:userdata.idx,
+                        tier:getTier.idx,
+                        content_access: amount
+                    });
+                }
+                return res.status(200).send({
+                    message:"Subscribe",
+                    tier:tier,
+                    price:getTier.price,
+                    left_access:`${amount} `
                 });
-                
             }
             else{
-                amount =  getTier.content_access;
-    
-                let insertSubscribe = await Subscription.create({
-                    id_user:userdata.idx,
-                    tier:getTier.idx,
-                    content_access: amount
+                return res.status(404).send({
+                    message:"Not Found",
                 });
             }
-            return res.status(200).send({
-                message:"Subscribe",
-                tier:tier,
-                price:getTier.price,
-                left_access:`${amount} `
-            });
         }
         else{
             return res.status(403).send({
@@ -221,6 +227,7 @@ router.post("/subscription",async(req,res)=>{
             });
         }
     } catch (error) {
+        console.log(error);
         return res.status(400).send({message:"Token Expired"});
     }
     
